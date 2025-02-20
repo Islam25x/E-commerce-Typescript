@@ -1,0 +1,137 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+#Offer{
+    padding: 3rem 0;
+}
+/* Main Container */
+.main-container {
+    background: linear-gradient(to right, black, black, #2f2f2f, black);
+    padding: 20px;
+}
+#Offer .left{
+    margin: 7rem 0 0 1rem
+}
+#Offer .left h1{
+    width: 60% ;
+    letter-spacing: .2rem;
+    font-size: 2.5rem;
+}
+#Offer .timer{
+    margin:2.5rem 0 2.5rem -1rem
+}
+.text-success {
+    color: #00ff85 !important;
+}
+  /* Timer Styling */
+.time-box {
+    background: white;
+    color: black;
+    height: 4rem;
+    width: 4rem;
+    margin-left: 1rem;
+    border-radius: 50%;
+    text-align: center;
+    align-content: center;
+}
+
+.time-box span {
+    display: block;
+    font-size: 0.8rem;
+    color: #777;
+}
+
+.product-image {
+    width: 100%;
+    height: auto;
+    margin-top: -2rem;
+    transform: scale(1.2) rotateY(180deg);
+}
+.Buy-Now{
+    background-color: #00ff85;
+    margin-bottom: 3rem;
+    transition: .3s;
+}
+.Buy-Now:hover{
+    background-color: #06ae5d;
+}
+@media (max-width: 767px){
+    .product-image {
+        width: 100%;
+        height: auto;
+        margin-top: -2rem;
+        transform: scale(1.2) rotateY(180deg);
+        position: absolute;
+        top: 16rem;
+        right: 0rem;
+    }
+    #Offer .timer{
+        margin:25.5rem 0 2.5rem -1rem;
+    }
+    
+}
+
+/* Small Screans */
+@media (min-width: 768px) and (max-width: 991px){
+    #Offer .left{
+        margin: 0rem 0 0 1rem
+    }
+    #Offer .left h1{
+        width: 100% ;
+        font-size: 2rem;
+    }
+}
+
+/* Medium Screans  */
+@media (min-width: 992px){
+    #Offer .left{
+        margin: 3rem 0 0 1rem
+    }
+    #Offer .left h1{
+        width: 70% ;
+        font-size: 2rem;
+    }
+    #Offer .timer{
+        margin:2.5rem 0 2.5rem -1rem
+    }
+}
+/* Large Screans  */
+@media (min-width: 1200px) {
+    #Offer .left{
+        margin: 5rem 0 0 1rem
+    }
+    #Offer .left h1{
+        width: 60% ;
+        font-size: 2rem;
+    }
+    .product-image {
+        width: 100%;
+        height: auto;
+        margin-top: -2rem;
+        transform: scale(1.2) rotateY(180deg);
+    }
+    #Offer .timer{
+        margin:2.5rem 0 2.5rem -1rem
+    }
+}
+/* // XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+    #Offer .left{
+        margin: 7rem 0 0 1rem
+    }
+    #Offer .left h1{
+        width: 60% ;
+        font-size: 2.5rem;
+    }
+    .product-image {
+        width: 100%;
+        height: auto;
+        margin-top: -2rem;
+        transform: scale(1.2) rotateY(180deg);
+    }
+    #Offer .timer{
+        margin:2.5rem 0 2.5rem -1rem
+    }
+}

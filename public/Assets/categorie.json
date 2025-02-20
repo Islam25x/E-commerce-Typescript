@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1 ,
+        "catTitle": "Woman’s Fashion"
+    },
+    {
+        "id": 2 ,
+        "catTitle": "Men’s Fashion"
+    },
+    {
+        "id": 3 ,
+        "catTitle": "Electronics"
+    },
+    {
+        "id": 4 ,
+        "catTitle": "Home & Lifestyle"
+    },
+    {
+        "id": 5 ,
+        "catTitle": "Medicine"
+    },
+    {
+        "id": 6 ,
+        "catTitle": "Sports & Outdoor"
+    },
+    {
+        "id": 7 ,
+        "catTitle": "Baby’s & Toys"
+    },
+    {
+        "id": 8 ,
+        "catTitle": "Groceries & Pets"
+    },
+    {
+        "id": 9 ,
+        "catTitle": "Health & Beauty"
+    }
+]

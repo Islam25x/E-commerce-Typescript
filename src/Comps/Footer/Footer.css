@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+#footer {
+    background-color:black;
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    margin-top: 1rem;
+}
+#footer h6 {
+    margin: 1rem 0;
+}
+#footer h5{
+    margin-bottom: 1.5rem;
+    margin-top: 2rem;
+}
+#footer p {
+    font-size: 14px;
+    margin-top: 1rem;
+}
+#footer .list-unstyled li{
+    margin-top: 1rem;
+}
+#footer .list-unstyled li a {
+    color: #ffffff;
+    text-decoration: none;
+    padding-top: 1rem;
+}
+#footer .list-unstyled li a:hover {
+    text-decoration: underline;
+}  
+#footer .social-icons a {
+    font-size: 18px;
+}  
+#footer .social-icons a:hover {
+    color: #ddd;
+}
+#footer form {
+    position: relative;
+}
+#footer form input{
+    background-color: black;
+    color: white;
+    border-radius: inherit;
+    width: 66%;
+}
+#footer form input::placeholder{
+    color: rgb(50, 48, 48);
+}
+#footer form span{
+    padding-left: 1rem;
+    background-color: black;
+    position: absolute;
+    top: 4px;
+    right: 38%;
+}

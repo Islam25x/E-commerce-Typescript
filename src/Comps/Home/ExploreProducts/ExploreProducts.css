@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+#ExploreProducts .product .product-title{
+    margin-top: 3rem;
+}
+#ExploreProducts .product-bottom .active{
+    position: relative;
+    border: 1px solid black;
+}
+#ExploreProducts .product-bottom .active::after{
+    content: "";
+    width: .9rem;
+    height: .9rem;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 50%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+#ExploreProducts .product-bottom {
+    margin-left: -.2rem;
+}

@@ -1,0 +1,136 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+    list-style: none;
+}
+/* left side  */
+#HomeTop nav{
+    border-right: 2px solid #dbdbdb;
+    margin-top: -.1rem;
+    padding-bottom: 1rem;
+}
+#HomeTop ul{
+    padding-top: 1.5rem;
+}
+#HomeTop .Cats__list{
+    font-weight: 500;
+    padding-top: .8rem;
+    margin-top: -.1rem;
+    cursor: pointer;
+}
+#HomeTop .Cats__list:hover{
+    text-decoration: underline;
+}
+/* right side  */
+#HomeTop .swiper{
+    margin: 2.5rem 0;
+    position: relative;
+    height: 20.7rem;
+    width: 100%;
+    z-index: 111;
+}
+#HomeTop .swiper .slide-img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+#HomeTop .swiper .silde-content {
+    margin: 3rem 0 0 3.5rem;
+    color: white;
+    width: 30%;
+}
+#HomeTop .swiper .silde-content .top img{
+    width: 3.5rem;
+}
+#HomeTop .swiper .silde-content .top .title{
+    display: flex;
+    align-items: self-end;
+    margin-left: .5rem;
+}
+#HomeTop .swiper .silde-content h1{
+    font-size: 3rem;
+    margin-top: 1rem;
+    line-height: 3.7rem;
+}
+#HomeTop .swiper .silde-content .bottom button{
+    color: white;
+    background-color: transparent;
+    padding-bottom: .3rem;
+    margin-top: 1rem;
+    border: none;
+    border-bottom: 1px solid white;
+}
+#HomeTop .swiper .silde-content .bottom i{
+    display: flex;
+    align-items: center;
+    margin: 1rem 0 0 .5rem;
+    transition: .3s;
+}
+#HomeTop .swiper .silde-content .bottom:hover > i{
+    margin-left: 1rem;
+}
+.swiper-pagination-bullet , .swiper-pagination-bullet-active{
+    padding: .3rem;
+}
+.swiper-pagination-bullet {
+    background-color: gray;
+}
+.swiper-pagination-bullet-active{
+    background-color: red;
+    border: 2px solid white;
+}
+/* Media queries for responsiveness */
+@media (max-width: 1024px) {
+    #HomeTop .swiper .slide-content {
+        width: 50%; /* Adjust for tablet screens */
+    }
+
+    #HomeTop .swiper .slide-content h1 {
+        font-size: 2.5rem; /* Adjust text size */
+    }
+
+    #HomeTop .swiper .slide-content .bottom button {
+        font-size: 1.2rem; /* Adjust button font size */
+    }
+}
+
+@media (max-width: 768px) {
+    #HomeTop .swiper .slide-content {
+        width: 60%; /* Adjust for smaller screens */
+        margin-left: 2rem; /* Add left margin for better spacing */
+    }
+
+    #HomeTop .swiper .slide-content h1 {
+        font-size: 2rem; /* Adjust text size */
+    }
+
+    #HomeTop .swiper .slide-content .bottom button {
+        font-size: 1rem; /* Adjust button font size */
+    }
+
+    #HomeTop .swiper .slide-content .bottom i {
+        font-size: 1.2rem; /* Adjust icon size */
+    }
+}
+
+@media (max-width: 576px) {
+    #HomeTop .swiper .slide-content {
+        width: 80%; /* Full width for small screens */
+        margin-left: 1rem; /* Adjust left margin */
+    }
+
+    #HomeTop .swiper .slide-content h1 {
+        font-size: 1.8rem; /* Further reduce font size */
+    }
+
+    #HomeTop .swiper .slide-content .bottom button {
+        font-size: 1rem; /* Adjust button font size */
+    }
+
+    #HomeTop .swiper .slide-content .bottom i {
+        font-size: 1.5rem; /* Adjust icon size */
+    }
+}

@@ -1,0 +1,153 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+    transition: .3s;
+}
+#NavLogSign .navbar{
+    padding: 1rem 0;
+    border-bottom: 2px solid #0000001c;;
+}
+#NavLogSign a{
+    color: black;
+    font-weight: 600;
+    margin-left: 1rem;
+    text-decoration: none;
+}
+#NavLogSign a:hover{
+    text-decoration: underline;
+}
+#NavLogSign input{
+    background-color: #f5f5f5;
+    border: none;
+    width: 15rem;
+}
+#NavLogSign form a{
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    text-decoration: none;
+    margin-left: 0rem;
+}
+#NavLogSign form a span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: .8rem;
+    height: 1rem;
+    width: 1rem;
+    background-color: #DB4444;
+    color: white;
+    position: absolute;
+    top: 0;
+    left: .8rem;
+}
+#NavLogSign form a i{
+    color: black;
+}
+#NavLogSign form a:hover{
+    text-decoration: none;
+}
+.navbar-brand:hover{
+    text-decoration: none !important;
+    cursor:default !important;
+}
+#NavLogSign form a i:hover{
+    color: #DB4444;
+}
+#NavLogSign form .Search-i {
+    background-color: #f5f5f5;
+    padding: .3rem 1.5rem;
+    position: absolute;
+    right: 7.5rem;
+    top: .2rem;
+}
+.profile-photo{
+    background-color: #DB4444;
+    display: flex;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    position: relative;
+}
+.profile-photo .def-user {
+    color: white;
+    font-size: .9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dropdown{
+    position: absolute;
+    right: 0;
+}
+.dropdown-toggle {
+    opacity: 0;
+}
+.dropdown-menu.show {
+    margin: .5rem 0 0 -12rem;
+    background: linear-gradient(135deg, rgba(149, 149, 149, 0.7), rgba(0, 0, 0, 0.733)); /* لون خلفية متدرج */
+    backdrop-filter: blur(10px)
+    
+}
+.dropdown-item{
+    color: white !important;
+}
+.dropdown-item h6{
+    font-weight: 400;
+}
+.dropdown-item i{
+    color: white !important;
+}
+.dropdown-item:hover{
+    background-color: white;
+    color: black !important;
+}
+.dropdown-item:hover > i{
+    color: black !important;
+}
+/* Mobile */
+@media (max-width: 767px){
+    #NavLogSign input{
+        background-color: #f5f5f5;
+        border: none;
+        width: 90%;
+    }
+}
+
+/* Small Screans */
+@media (min-width: 768px) and (max-width: 991px){
+    #NavLogSign input{
+
+        width: 90%;
+    }
+}
+
+/* Medium Screans  */
+@media (min-width: 992px){
+
+
+}
+/* Large Screans  */
+@media (min-width: 1200px) {
+
+}
+/* // XX-Large devices (larger desktops, 1400px and up) */
+/* @media (min-width: 1400px) {
+    #NavLogSign input{
+        background-color: #f5f5f5;
+        border: none;
+        width: 15rem;
+    }
+    #NavLogSign form i {
+        display: flex;
+        align-items: center;
+        margin-left: 1rem;
+        font-size: 1.2rem;
+    }
+
+} */

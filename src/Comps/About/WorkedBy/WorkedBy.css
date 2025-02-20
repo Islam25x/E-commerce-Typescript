@@ -1,0 +1,23 @@
+#WorkedBy{
+    padding: 3rem 0;
+}
+#WorkedBy .top{
+    background-color: #f1f1f1;
+    padding: 2rem 3rem 0;
+}
+#WorkedBy img{
+    width: 100%;
+    height: 25rem;
+}
+#WorkedBy .icons{
+    margin: 0 0 4rem -1rem;
+}
+#WorkedBy .icons i{
+    cursor: pointer;
+    color: black;
+    font-size: 1.2rem;
+    margin-left: 1rem;
+}
+#WorkedBy .icons i:hover{
+    color: rgb(95, 95, 95);
+}

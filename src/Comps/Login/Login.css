@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}  
+#Login{
+    padding-bottom: 2rem;
+}
+#Login img{
+    margin-top: 3rem;
+    width: 100%;
+    height: 33rem;
+    object-fit: cover;
+}
+#Login .right-side{
+    padding-top: 22%;
+    width: 70%;
+    margin: 0 auto;
+}
+.heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.sub-heading {
+    font-size: 14px;
+    color: black;
+    margin-bottom: 20px;
+    }
+    
+    /* Form and input styling */
+    .form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .input {
+        padding: 10px 0;
+        font-size: 14px;
+        border-radius: 4px;
+        border-color: transparent;
+        border-bottom: 1px solid black;
+    }
+    
+    /* Button styling */
+    .button {
+        padding: 10px;
+        background-color: #d32f2f;
+        color: #fff;
+        font-size: 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    .button:hover {
+        background-color: #b71c1c;
+    }
+    #Login .login{
+        color: #555;
+        margin-top: 2rem;
+        text-align: center;
+    }
+    #Login .login a{
+        color: black;
+    }
+    #Login .btns p{
+        padding-top: .5rem;
+        display: flex;
+        align-items: end;
+        color: red;
+        cursor: pointer;
+    }
+    #Login .btns p:hover{
+        color: #b71c1c;
+    }

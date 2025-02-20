@@ -1,0 +1,11 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+#BestSelling {
+    padding: 1rem 0 3rem;
+}
+#BestSelling .BestSelling-Top ,#Favorite .Favorite-Top{
+    margin-top: 1.5rem;
+}

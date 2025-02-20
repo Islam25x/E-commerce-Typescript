@@ -1,0 +1,10 @@
+#AboutTop{
+    padding: 0 0 3rem;
+}
+#AboutTop p{
+    width: 80%;
+}
+#AboutTop img{
+    width: 100%;
+    height: 33rem;
+}

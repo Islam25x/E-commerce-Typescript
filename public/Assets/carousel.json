@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "carImage": "images/iphone.jpg",
+        "TitleImage": "",
+        "carTitle": "",
+        "carContent": "Up to 10% off Voucher"
+    },
+    {
+        "id": 2,
+        "carImage": "images/head_3.png.png",
+        "carTitle": "",
+        "carContent": "iPad mini 2022",
+        "TitleImage":""
+    },
+    {
+        "id": 3,
+        "carImage": "images/head_1.png.png",
+        "carTitle": "",
+        "carContent": "EKO 40 Android TV",
+        "TitleImage":""
+    },
+    {
+        "id": 4,
+        "carImage": "images/slider3.png.png",
+        "carTitle": "",
+        "carContent": "Smart Headphone",
+        "TitleImage":""
+    }
+]

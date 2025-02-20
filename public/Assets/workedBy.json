@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "name": "Tom Cruise",
+        "image": "https://s3-alpha-sig.figma.com/img/0881/49fd/5afc043392ee3cbb529f429b3e2098d3?Expires=1740960000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=ENjf6yN4wIP0IJLRkDQdiL~yuLVNgzK6SMhBzD59y80oJHhFzQaXodj4r~gFgXXy4KZA-Urxybtm-QV7uooT0iNMvfE-x6NgwPH3HmeXS0Q3ZtjkUyRANfTPBqsm9g6EsZ4COQC9n23xEjrm8sZBBg4fvt6zuqTeMD-gSsrzGHpUFdpEld~qWNp~jo90wmS3~JlQ4KmCzUSld33sBDipxr4ouzXTvk-eVs~5fb14wnTijyxdea9ln~dtZn4VqntFK5g0-EOTt8wSLBsaxEQH5CpPFVvF8poCwxRZoffgXyYXUpLXj81eh9t7i1RN6UksH9AQ0irNLXuQv-xaoOodQQ__",
+        "work": "Founder & Chairman"
+    },
+    {
+        "id": 2,
+        "name": "Emma Watson",
+        "image": "https://s3-alpha-sig.figma.com/img/8438/eab9/a2fe88af0272adecd83422d0cb7e20d7?Expires=1740960000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=HKlSXkY0XJetHd~iMjSZa5mvJpsIFEtEB9kVX6G203EuzMPN5RPMnSpJcAQPoyc1BuwixgIg-ajBIOQTQmMWWIMg~cKye~F~oG79jPqU1ra1yc4NqpAhn2H0ZXrAzNPdaD7-ku5PHqtcdMJvFbId-iaTLSLySAe2dqohVqy~ONRZi~uETxjxCzgImYwu3J4mO6QmhTHfwjMdHVp4Rn91BEMSv9JXNpMexZ87bTkbIQpaHgP42~nDx1cPngRXc-G2OwURAvfQLYk7gYM5-ErGgRcxmvVGY35Rg0AIQxKM2vEINpdN1bzOma4SubDisipeIuzkcNzp96uOSaefQfEfOg__",
+        "work": "Managing Director"
+    },
+    {
+        "id": 3,
+        "name": "Will Smith",
+        "image": "https://s3-alpha-sig.figma.com/img/ede4/8f2b/5df8103b281240ce5bafe5dd7d215ab8?Expires=1740960000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=gnvnHDiTz~r1YolUx3WaQdoTrCh9Qf3yg2-Us81564mF2xG4dOQ3UDg89mcUjqvQqX9Ik1mCaEnbt1IKP9onj~1GgvBqpW8MYx0IPvUddUP1DseJYkdQN2coiczMEErbWWTfZa8b0D0eE7NYcK2Z8bUmdFkuObz~Yj7k8UvvqF38YUBCQwe0ONjfANLZMVVDYDD6XRm1NiP918F4-ltrKWO7KjbY0CwMhHvkEljdd0KXgGhSuN8GogfyfAN6W~JkUF14kpmujb0KG-9USAIuXn7IJ5roH~9lTXvGkNaUEUPz-mFMZk0HxtO1ViorK7FkMTZ~Rj9pdI0XtMcnHFo-Fg__",
+        "work": "Product Designer"
+    },
+    {
+        "id": 4,
+        "name": "Tom Cruise",
+        "image": "https://s3-alpha-sig.figma.com/img/0881/49fd/5afc043392ee3cbb529f429b3e2098d3?Expires=1740960000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=ENjf6yN4wIP0IJLRkDQdiL~yuLVNgzK6SMhBzD59y80oJHhFzQaXodj4r~gFgXXy4KZA-Urxybtm-QV7uooT0iNMvfE-x6NgwPH3HmeXS0Q3ZtjkUyRANfTPBqsm9g6EsZ4COQC9n23xEjrm8sZBBg4fvt6zuqTeMD-gSsrzGHpUFdpEld~qWNp~jo90wmS3~JlQ4KmCzUSld33sBDipxr4ouzXTvk-eVs~5fb14wnTijyxdea9ln~dtZn4VqntFK5g0-EOTt8wSLBsaxEQH5CpPFVvF8poCwxRZoffgXyYXUpLXj81eh9t7i1RN6UksH9AQ0irNLXuQv-xaoOodQQ__",
+        "work": "Founder & Chairman"
+    },
+    {
+        "id": 5,
+        "name": "Emma Watson",
+        "image": "https://s3-alpha-sig.figma.com/img/8438/eab9/a2fe88af0272adecd83422d0cb7e20d7?Expires=1740960000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=HKlSXkY0XJetHd~iMjSZa5mvJpsIFEtEB9kVX6G203EuzMPN5RPMnSpJcAQPoyc1BuwixgIg-ajBIOQTQmMWWIMg~cKye~F~oG79jPqU1ra1yc4NqpAhn2H0ZXrAzNPdaD7-ku5PHqtcdMJvFbId-iaTLSLySAe2dqohVqy~ONRZi~uETxjxCzgImYwu3J4mO6QmhTHfwjMdHVp4Rn91BEMSv9JXNpMexZ87bTkbIQpaHgP42~nDx1cPngRXc-G2OwURAvfQLYk7gYM5-ErGgRcxmvVGY35Rg0AIQxKM2vEINpdN1bzOma4SubDisipeIuzkcNzp96uOSaefQfEfOg__",
+        "work": "Managing Director"
+    },
+    {
+        "id": 6,
+        "name": "Will Smith",
+        "image": "https://s3-alpha-sig.figma.com/img/ede4/8f2b/5df8103b281240ce5bafe5dd7d215ab8?Expires=1740960000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=gnvnHDiTz~r1YolUx3WaQdoTrCh9Qf3yg2-Us81564mF2xG4dOQ3UDg89mcUjqvQqX9Ik1mCaEnbt1IKP9onj~1GgvBqpW8MYx0IPvUddUP1DseJYkdQN2coiczMEErbWWTfZa8b0D0eE7NYcK2Z8bUmdFkuObz~Yj7k8UvvqF38YUBCQwe0ONjfANLZMVVDYDD6XRm1NiP918F4-ltrKWO7KjbY0CwMhHvkEljdd0KXgGhSuN8GogfyfAN6W~JkUF14kpmujb0KG-9USAIuXn7IJ5roH~9lTXvGkNaUEUPz-mFMZk0HxtO1ViorK7FkMTZ~Rj9pdI0XtMcnHFo-Fg__",
+        "work": "Product Designer"
+    }
+]

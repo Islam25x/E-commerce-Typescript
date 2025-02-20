@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "title": "Phones",
+        "icon": "fa-solid fa-mobile-screen" 
+    },
+    {
+        "id": 2,
+        "title": "Computers",
+        "icon": "fa-solid fa-desktop"
+    },
+    {
+        "id": 3,
+        "title": "SmartWatch",
+        "icon": "fa-regular fa-clock"
+    },
+    {
+        "id": 4,
+        "title": "Camera",
+        "icon": "fa-solid fa-camera"
+    },
+    {
+        "id": 5,
+        "title": "HeadPhones",
+        "icon": "fa-solid fa-headphones" 
+    },
+    {
+        "id": 6,
+        "title": "Gaming",
+        "icon": "fa-solid fa-gamepad"
+    }
+]

@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+#NavTop{
+    background-color: #000;
+    color: #fff;
+    padding: .7rem 0;
+}
+#NavTop span a{
+    margin-left: 1rem;
+    color: #fff;
+}
+select{
+    background-color: #000;
+    color: #fff;
+    border: none;
+    outline: none;
+    font-size: "14px";
+}
+header{
+    border-bottom: 1px solid #fffdfd;
+}

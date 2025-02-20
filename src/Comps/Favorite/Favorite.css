@@ -1,0 +1,10 @@
+#Favorite{
+    padding: 3rem 0;
+}
+#Favorite .product .addCart ,#Favorite .product .RemoveCart{
+    bottom: 6rem;
+    padding: .5rem;
+}
+#Favorite .product .product-des{
+    margin-top: 15.2rem;
+}

@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+#Categories{
+    padding: 3rem 0;
+}
+#Categories .cat-ctn{
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 3rem;
+    width: 100%;
+    color: black;
+    border: 1px solid rgb(193, 192, 192);
+    border-radius: .3rem;
+    transition: .3s;
+}
+#Categories .cat-ctn i{
+    font-size: 2.5rem;
+    margin: 2rem 0 1rem;
+}
+#Categories .cat-ctn p{
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+#Categories .cat-ctn:hover , #Achievement .Achievement-ctn:hover{
+    color: white;
+    background-color: #DB4444;
+}

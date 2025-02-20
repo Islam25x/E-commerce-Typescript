@@ -1,0 +1,146 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+#Arrival{
+    padding: 2rem 0;
+}
+#Arrival .left , #Arrival .right-bottom .right-bottom-left {
+    margin-top: 3rem;
+    color: white;
+    background-color: black;
+    background-image: url('../../../../public/images/playstation.png');
+    background-size: cover;
+    height: 35rem;
+}
+#Arrival .right{
+    margin-top: 3rem;
+    height: 92%;
+}
+#Arrival .right .right-top{
+    position: relative; 
+    background-color: #0d0d0d;
+    height: 50%;
+    color: white;
+}
+#Arrival .right .right-top-photo{
+    width: 100%;
+    right: 100%;
+    position: absolute;
+    top: -3.28rem;
+    left: 5.5rem;
+    transform: rotateY(180deg) scale(.7);
+}
+#Arrival .right .right-top .right-top-ctn{
+    position: relative;
+    width: 45%;
+    padding: 20% 0 0 2rem;
+    z-index: 1;
+}
+#Arrival .left .left-ctn{
+    padding: 65% 0 0 2rem;
+}
+#Arrival .right-bottom {
+    height: 50%;
+}
+#Arrival .right-bottom .right-bottom-left , #Arrival .right-bottom .right-bottom-right{
+    background-color: #0d0d0d;
+    margin-top: 1rem;
+    background-size: cover;
+    background-image: url('images/Speakers.png');
+    height: 16.5rem;
+}
+#Arrival .right-bottom .right-bottom-right{
+    color: white;
+    background-image: url('https://s3-alpha-sig.figma.com/img/1531/5cd1/5102562cf220504d288fa568eaa816dd?Expires=1740960000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=mz8sRL0Q37XEo-V~3IG9MeudZRtLeDXou3fU9LxX6aGZptFgSgXBfVIQq70lhd11xIECmY6M1QSCEkwnMmQsWQOBMcnOhRbgye6QgDFlBxE-r38MZPDAJvVu6I869805d32SNNfPz0WF9tzYsFYQrsoUsr5uLPYXESt7fGRUj-3iJGF4OqHf5JpFqD0GxmlotHYijV81bIvTQxu5ZWlZ9~5-aiZyJFFySJnJRNNW3L9lwdtV3YDMe9WcPfk~Hva-0-nBK-wfbn3KOlTlj-Omtxe9csTBrhVo9Zk~3iQ6T3t04rpGUyzbM5MxduJRTx68WriMwyXNsSG9~uhMJBjbMQ__');
+}
+#Arrival .right-bottom .right-bottom-left-ctn , #Arrival .right-bottom .right-bottom-right .right-bottom-right-ctn{
+    padding-top: 43%;
+    margin-left: 2rem;
+}
+
+@media (max-width: 767px){
+
+    #Arrival .right-bottom .right-bottom-left, #Arrival .right-bottom .right-bottom-right {
+        margin-top: 1rem;
+        height: 100%;
+    }
+    #Arrival .right-bottom .right-bottom-right{
+        margin-top: 2rem;
+    }
+    #Arrival .right .right-top {
+        height: 29.2%;
+    }
+    #Arrival .right .right-top-photo {
+        top: -0.28rem;
+        left: 4.5rem;
+    }
+
+}
+
+/* Small Screans */
+@media (min-width: 768px) and (max-width: 991px){
+    #Arrival .right-bottom .right-bottom-left, #Arrival .right-bottom .right-bottom-right {
+        margin-top: 1rem;
+        height: 100%;
+    }
+    #Arrival .right-bottom .right-bottom-right{
+        margin-top: 2rem;
+    }
+    #Arrival .right .right-top {
+        height: 29.2%;
+    }
+}
+
+/* Medium Screans  */
+@media (min-width: 992px){
+    #Arrival .right-bottom .right-bottom-left, #Arrival .right-bottom .right-bottom-right {
+        margin-top: 1rem;
+        height: 16.5rem;
+    }
+    #Arrival .right-bottom .right-bottom-right{
+        margin-top: 1rem;
+    }
+    #Arrival .right .right-top {
+        height: 50%;
+    }
+    #Arrival .right .right-top-photo {
+        top: 2.59rem;
+        left: 3.5rem;
+    }
+}  
+/* Large Screans  */
+@media (min-width: 1200px) {
+    #Arrival .right-bottom .right-bottom-left, #Arrival .right-bottom .right-bottom-right {
+        margin-top: 1rem;
+        height: 16.5rem;
+    }
+    #Arrival .right-bottom .right-bottom-right{
+        margin-top: 1rem;
+    }
+    #Arrival .right .right-top {
+        height: 50%;
+    }
+    #Arrival .right .right-top-photo {
+        top: -.36rem;
+        left: 4.5rem;
+    }
+}
+/* // XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+    #Arrival .right-bottom .right-bottom-left, #Arrival .right-bottom .right-bottom-right {
+        margin-top: 1rem;
+        height: 16.5rem;
+    }
+    #Arrival .right-bottom .right-bottom-right{
+        margin-top: 1rem;
+    }
+    #Arrival .right .right-top {
+        height: 50%;
+    }
+    #Arrival .right .right-top-photo {
+        top: -3.28rem;
+        left: 5.5rem;
+    }
+}
