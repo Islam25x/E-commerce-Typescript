@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
-import Convert from "../../../functions/FormatCurrncy";
+import Convert from "../../functions/FormatCurrncy";
 import { fetchProducts } from "../../Redux/CartSlice";
 import { useAppDispatch, useAppSelector } from "../../Redux/Store";
 import { Link } from "react-router";

@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../Redux/Store";
 import { renderStars } from "../../Redux/CartSlice";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Grid, Navigation } from "swiper/modules";
-import Convert from "../../../functions/FormatCurrncy";
+import Convert from "../../functions/FormatCurrncy";
 import { Link, useNavigate } from "react-router-dom";
 
 import 'swiper/swiper-bundle.css';

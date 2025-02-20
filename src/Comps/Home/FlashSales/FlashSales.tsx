@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import Convert from "../../../functions/FormatCurrncy";
+import Convert from "../../functions/FormatCurrncy";
 import { renderStars } from "../../Redux/CartSlice";
 import { Link } from "react-router-dom";
 import { fetchProducts } from "../../Redux/CartSlice";

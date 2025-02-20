@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import Convert from "../../functions/FormatCurrncy";
+import Convert from "../functions/FormatCurrncy";
 import { Link, useParams } from "react-router-dom";
 import NavHomeAcc from "../nav/navHomeAcc";
 import { useAppDispatch, useAppSelector } from "../Redux/Store";

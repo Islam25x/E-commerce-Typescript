@@ -1,8 +1,8 @@
-import Convert from "../../functions/FormatCurrncy";
 import { Container, Row, Col } from "react-bootstrap";
 import { useAppDispatch, useAppSelector } from "../Redux/Store";
 import { Link } from "react-router-dom";
 import { removeFromCart, increaseProduct, decreaseProduct } from "../Redux/CartSlice";
+import Convert from "../functions/FormatCurrncy";
 
 import "./Cart.css";
 
@@ -10,7 +10,6 @@ const Cart = () => {
   const dispatch = useAppDispatch();
   const Cart = useAppSelector((state) => state.cart.cart);
   const totalPrice = useAppSelector((state) => state.cart.totalPrice);
-  const isLoading  = useAppSelector((state) => state.cart.isLoading);
 
   return (
     

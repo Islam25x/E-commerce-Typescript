@@ -9,7 +9,7 @@ import { getProductByBrowseCategory } from "../../Redux/CartSlice";
 import "./Categories.css";
 import { useAppDispatch, useAppSelector } from "../../Redux/Store";
 
-// تحديد نوع البيانات للـ Categories
+
 interface CategoryType {
     id: number;
     title: string;
@@ -17,11 +17,8 @@ interface CategoryType {
 }
 
 const Categories = () => {
-    // حالة لتخزين البيانات
     const [categories, setCategories] = useState<CategoryType[]>([]);
 
-    const pro = useAppSelector((state)=> state.cart.products[0])
-    console.log(pro.Bcategory);
     
     useEffect(() => {
         const fetchCategories = async () => {
@@ -36,10 +33,8 @@ const Categories = () => {
         fetchCategories();
     }, []);
 
-    // مرجع لمتصفح Swiper
     const swiperRef = useRef<any>(null);
 
-    // التعامل مع التنقل
     const handleNext = () => {
         if (swiperRef.current) swiperRef.current.swiper.slideNext();
     };

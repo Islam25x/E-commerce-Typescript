@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useAppSelector } from "../Redux/Store";
 import { Link } from "react-router";
-import Convert from "../../functions/FormatCurrncy";
+import Convert from "../functions/FormatCurrncy";
 
 import "./CheckOut.css";
 

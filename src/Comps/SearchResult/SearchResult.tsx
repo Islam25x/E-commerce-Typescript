@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useParams, Link } from "react-router-dom";
-import Convert from "../../functions/FormatCurrncy";
+import Convert from "../functions/FormatCurrncy";
 import NavHomeAcc from "../nav/navHomeAcc";
 import { getProductByName } from "../Redux/CartSlice";
 import { useAppDispatch, useAppSelector } from "../Redux/Store";

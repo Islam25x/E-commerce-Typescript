@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { Container } from "react-bootstrap";
 import { Swiper, SwiperSlide } from "swiper/react";
-import Convert from "../../functions/FormatCurrncy";
+import Convert from "../functions/FormatCurrncy";
 import { useAppDispatch, useAppSelector } from "../Redux/Store";
 import { removeFavourite } from "../Redux/FavouriteSlice";
 import { addToCart, removeFromCart, addAllCart } from "../Redux/CartSlice";

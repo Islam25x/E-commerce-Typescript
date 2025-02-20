@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import Convert from "../../functions/FormatCurrncy";
+import Convert from "../functions/FormatCurrncy";
 import { useAppDispatch, useAppSelector } from "../Redux/Store";
 import {
   addToCart,

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Swiper, SwiperSlide } from "swiper/react";
-import Convert from "../../../functions/FormatCurrncy";
+import Convert from "../../functions/FormatCurrncy";
 import { addFavourite, removeFavourite } from "../../Redux/FavouriteSlice";
 import { useAppDispatch, useAppSelector } from "../../Redux/Store";
 import { fetchProducts, removeFromCart, addToCart, getProductById, renderStars } from "../../Redux/CartSlice";
