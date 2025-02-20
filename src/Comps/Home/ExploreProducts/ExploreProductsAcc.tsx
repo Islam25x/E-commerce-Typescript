@@ -8,9 +8,7 @@ import { addFavourite, removeFavourite } from "../../Redux/FavouriteSlice";
 import { useAppDispatch, useAppSelector } from "../../Redux/Store";
 import { Link } from "react-router-dom";
 
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/grid";
+import 'swiper/swiper-bundle.css';
 import "./ExploreProducts.css";
 import "../FlashSales/FlashSales.css";
 

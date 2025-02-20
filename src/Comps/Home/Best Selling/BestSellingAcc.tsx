@@ -8,8 +8,7 @@ import { fetchProducts, removeFromCart, addToCart, getProductById, renderStars }
 import { Link } from "react-router";
 
 // import "@fortawesome/fontawesome-free/css/all.min.css"; // Import FontAwesome CSS
-import "swiper/css";
-import "swiper/css/navigation";
+import 'swiper/swiper-bundle.css';
 import "./BestSelling.css";
 
 type Product = {

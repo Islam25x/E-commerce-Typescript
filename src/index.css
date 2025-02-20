@@ -3,3 +3,6 @@
   text-align: center;
   align-content: center;
 }
+.swiper-pagination-bullet-active{
+  background-color: red !important;
+}

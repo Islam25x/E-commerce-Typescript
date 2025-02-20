@@ -7,9 +7,7 @@ import { Link } from "react-router-dom";
 import { useAppSelector , useAppDispatch } from "../../Redux/Store";
 import { getProductByCategory } from "../../Redux/CartSlice";
 
-import "swiper/css";
-import "swiper/css/autoplay";
-import "swiper/css/pagination";
+import 'swiper/swiper-bundle.css';
 
 import "./HomeTop.css";
 

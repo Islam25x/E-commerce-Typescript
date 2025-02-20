@@ -8,9 +8,8 @@ import { useAppDispatch, useAppSelector } from "../../Redux/Store";
 import { Link } from "react-router";
 import { renderStars } from "../../Redux/CartSlice";
 
-// import "@fortawesome/fontawesome-free/css/all.min.css"; // Import FontAwesome CSS
-import "swiper/css";
-import "swiper/css/navigation";
+import "@fortawesome/fontawesome-free/css/all.min.css"; 
+import 'swiper/swiper-bundle.css';
 import "./BestSelling.css";
 
 type Product = {

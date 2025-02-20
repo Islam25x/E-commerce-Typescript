@@ -22,6 +22,8 @@ import BcategoryProducts from './Comps/CategoryProducts/BcategoriesProducts';
 function App() {
 
   const IsLogin = useAppSelector((state)=> state.user.IsLogin)
+  console.log('log',IsLogin);
+  
 
   return (
     <>

@@ -111,7 +111,7 @@ const handleSearchSubmit = async (e) => {
                   <i className="me-3 fa-regular fa-star"></i>
                   <h6 className="mt-1">My Reviews</h6>
                 </NavDropdown.Item>
-                <NavDropdown.Item onClick={handleLogOut} href="/Login">
+                <NavDropdown.Item onClick={handleLogOut}>
                   <i className="me-3 fa-solid fa-arrow-right-from-bracket"></i>
                   <h6 className="mt-1">Logout</h6>
                 </NavDropdown.Item>

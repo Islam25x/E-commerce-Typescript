@@ -10,8 +10,7 @@ import { useAppDispatch, useAppSelector } from "../../Redux/Store";
 
 
 import "@fortawesome/fontawesome-free/css/all.css";
-import "swiper/css";
-import "swiper/css/navigation";
+import 'swiper/swiper-bundle.css';
 import "./FlashSales.css";
 
 type Product = {

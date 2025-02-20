@@ -6,8 +6,7 @@ import { useAppDispatch, useAppSelector } from "../Redux/Store";
 import { removeFavourite } from "../Redux/FavouriteSlice";
 import { addToCart, removeFromCart, addAllCart } from "../Redux/CartSlice";
 
-import "swiper/css";
-import "swiper/css/navigation";
+import 'swiper/swiper-bundle.css';
 import "./Favorite.css";
 
 // Define the type for a favorite product

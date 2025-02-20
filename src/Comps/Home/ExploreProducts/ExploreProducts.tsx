@@ -8,9 +8,7 @@ import { Grid, Navigation } from "swiper/modules";
 import Convert from "../../../functions/FormatCurrncy";
 import { Link, useNavigate } from "react-router-dom";
 
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/grid";
+import 'swiper/swiper-bundle.css';
 import "./ExploreProducts.css";
 import "../FlashSales/FlashSales.css";
 

@@ -9,8 +9,7 @@ import { useAppDispatch, useAppSelector } from "../../Redux/Store";
 import { fetchProducts, removeFromCart, addToCart, getProductById, renderStars } from "../../Redux/CartSlice";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "swiper/css";
-import "swiper/css/navigation";
+import 'swiper/swiper-bundle.css';
 import "./FlashSales.css";
 
 // Define product type
