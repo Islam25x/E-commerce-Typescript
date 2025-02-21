@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import { Container } from "react-bootstrap";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Convert from "../functions/FormatCurrncy";
@@ -28,6 +28,7 @@ type FavouriteProduct = {
     salebg: string;
     salepersent: string;
     stars: number;
+    Bcategory: string
 };
 
 const Favorite: React.FC = () => {
@@ -39,16 +40,6 @@ const Favorite: React.FC = () => {
 
     // Use Set to improve lookup performance (O(1) instead of O(n))
     const cartProductIds = useMemo(() => new Set(CartProducts.map((p) => p.id)), [CartProducts]);
-
-    // Safely retrieve favorites from localStorage and handle potential JSON parsing errors
-    const favorites: FavouriteProduct[] = useMemo(() => {
-        try {
-            return JSON.parse(localStorage.getItem("favourites") || "[]") as FavouriteProduct[];
-        } catch (error) {
-            console.error("Error parsing favourites from localStorage:", error);
-            return [];
-        }
-    }, []);
 
     return (
         <section id="Favorite">

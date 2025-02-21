@@ -45,9 +45,6 @@ const favouriteSlice = createSlice({
             state.favourites = state.favourites.filter((product) => product.id !== action.payload.id);
             localStorage.setItem("favourites", JSON.stringify(state.favourites));
         },
-        addAllFavouritesToCart: (state, action) => {
-            action.payload(state.favourites); // Dispatches the list of favorite products to be added to the cart
-        },
     },
 });
 

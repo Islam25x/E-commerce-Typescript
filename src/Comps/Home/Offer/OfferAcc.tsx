@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import{ useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { addFavourite, removeFavourite } from "../../Redux/FavouriteSlice";
 import { useAppDispatch, useAppSelector } from "../../Redux/Store";
-import { fetchProducts, removeFromCart, addToCart, getProductById, renderStars } from "../../Redux/CartSlice";
+import { fetchProducts, removeFromCart, addToCart} from "../../Redux/CartSlice";
 
 import './Offer.css'
 
@@ -24,14 +23,14 @@ type Product = {
     salebg: string;
     salepersent: string;
     stars: number;
+    Bcategory: string
 };
 const OfferAcc = () => {
     const [timer, setTimer] = useState(2121431);
     const dispatch = useAppDispatch();
     const { products } = useAppSelector((state) => state.cart);
     const cartItems: Product[] = useAppSelector((state) => state.cart.cart);
-    const favourites: Product[] = useAppSelector((state) => state.favourites.favourites);
-    const product: Product[] = products ? products[17]: [];
+    const product: Product | null= products ? products[17]: null;
 
     useEffect(() => {
         dispatch(fetchProducts());
@@ -80,11 +79,11 @@ const OfferAcc = () => {
                             </div>
                             {product && (  // Ensure product is fetched before rendering the button
                                 !isInCart(product.id) ? (
-                                    <button className="Buy-Now" onClick={() => dispatch(addToCart(product))} variant="success">
+                                    <button className="Buy-Now" onClick={() => dispatch(addToCart(product))}>
                                         Buy Now!
                                     </button>
                                 ) : (
-                                    <button className="Buy-Now bg-danger" onClick={() => dispatch(removeFromCart(product))} variant="success">
+                                    <button className="Buy-Now bg-danger" onClick={() => dispatch(removeFromCart(product))}>
                                         Remove from Cart
                                     </button>
                                 )
