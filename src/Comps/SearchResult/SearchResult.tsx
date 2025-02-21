@@ -6,9 +6,10 @@ import NavHomeAcc from "../nav/navHomeAcc";
 import { getProductByName } from "../Redux/CartSlice";
 import { useAppDispatch, useAppSelector } from "../Redux/Store";
 import { addFavourite, removeFavourite } from "../Redux/FavouriteSlice";
-import { addToCart, removeFromCart , renderStars } from "../Redux/CartSlice";
+import { addToCart, removeFromCart, renderStars } from "../Redux/CartSlice";
 
-// Define renderStars function (if it's not imported from elsewhere)
+import '../Home/ExploreProducts/ExploreProducts.css'
+
 type CartProduct = {
   id: number;
   name: string;
@@ -27,28 +28,26 @@ type CartProduct = {
   salebg: string;
   salepersent: string;
   stars: number;
+  Bcategory: string;
 };
+
 const SearchResult = () => {
   const { productIdentifier } = useParams();
-  const [selectedColors, setSelectedColors] = useState({});
+  const [selectedColors, setSelectedColors] = useState<Record<number, string>>({});
 
   const dispatch = useAppDispatch();
-  const cartProducts = useAppSelector((state) => state.cart.cart);
-  const favouriteProducts = useAppSelector((state) => state.favourites.favourites);
-  const filteredProducts = useAppSelector((state) => state.cart.filteredProducts);
+  const cartProducts = useAppSelector((state) => state.cart.cart) || [];
+  const favouriteProducts = useAppSelector((state) => state.favourites.favourites) || [];
+  const filteredProducts = useAppSelector((state) => state.cart.filteredProducts) || [];
 
   useEffect(() => {
     if (productIdentifier) {
-      // Dispatch the action to fetch products by name (if necessary)
       dispatch(getProductByName(productIdentifier));
     }
   }, [productIdentifier, dispatch]);
 
-  const isAddedToCart = (catProduct: CartProduct) =>
-    cartProducts.some((cartProduct) => cartProduct.id === catProduct.id);
-
-  const isAddedToFavourite = (catProduct: CartProduct) =>
-    favouriteProducts.some((favouriteProduct) => favouriteProduct.id === catProduct.id);
+  const isAddedToCart = (productId: number) => cartProducts.some((p) => p.id === productId);
+  const isAddedToFavourite = (productId: number) => favouriteProducts.some((p) => p.id === productId);
 
   const selectColor = (productId: number, color: string) => {
     setSelectedColors((prevColors) => ({
@@ -57,66 +56,47 @@ const SearchResult = () => {
     }));
   };
 
-  const AddFavorite = (product: CartProduct) => {
-    dispatch(addFavourite(product));
-  };
-
-  const RemoveFavorite = (product: CartProduct) => {
-    dispatch(removeFavourite(product));
-  };
-
-  const AddCart = (product: CartProduct) => {
-    dispatch(addToCart(product));
-  };
-
-  const RemoveCart = (product: CartProduct) => {
-    dispatch(removeFromCart(product));
-  };
-
   return (
     <section id="SearchResult">
       <NavHomeAcc />
       <section id="CategoryProducts">
         <Container>
           <Row>
-            {filteredProducts && filteredProducts.length > 0 ? (
+            {Array.isArray(filteredProducts) && filteredProducts.length > 0 ? (
               filteredProducts.map((product: CartProduct) => (
                 <Col lg={3} md={6} sm={12} key={product.id}>
                   <div className="product">
                     <div className="product-top d-flex justify-content-between">
                       <img src={product.image} alt={product.name} />
-                      <span></span>
                       <div className="icons">
-                        {isAddedToFavourite(product) ? (
-                          <i
-                            className="fa-regular fa-heart active"
-                            onClick={() => RemoveFavorite(product)}
-                          ></i>
-                        ) : (
-                          <i
-                            className="fa-regular fa-heart"
-                            onClick={() => AddFavorite(product)}
-                          ></i>
-                        )}
+                        <i
+                          className={`fa-regular fa-heart ${isAddedToFavourite(product.id) ? "active" : ""}`}
+                          onClick={() =>
+                            isAddedToFavourite(product.id)
+                              ? dispatch(removeFavourite(product))
+                              : dispatch(addFavourite(product))
+                          }
+                        ></i>
                         <Link to={`/Description/${product.id}`}>
                           <i className="fa-regular fa-eye"></i>
                         </Link>
                       </div>
                     </div>
-                    {isAddedToCart(product) ? (
-                      <div onClick={() => RemoveCart(product)} className="RemoveCart">
-                        <p>Remove from Cart</p>
-                      </div>
-                    ) : (
-                      <div onClick={() => AddCart(product)} className="addCart">
-                        <p>Add To Cart</p>
-                      </div>
-                    )}
+                    <div
+                      onClick={() =>
+                        isAddedToCart(product.id)
+                          ? dispatch(removeFromCart(product))
+                          : dispatch(addToCart(product))
+                      }
+                      className={isAddedToCart(product.id) ? "RemoveCart" : "addCart"}
+                    >
+                      <p>{isAddedToCart(product.id) ? "Remove from Cart" : "Add To Cart"}</p>
+                    </div>
                     <div className="product-des">
                       <p className="product-title">{product.name}</p>
                       <div className="price d-flex">
                         <p className="curr-price">{Convert(product.new_price)}</p>
-                        {typeof product.old_price === "number" && (
+                        {product.old_price !== null && (
                           <p className="prev-price">{Convert(product.old_price)}</p>
                         )}
                       </div>
@@ -124,14 +104,28 @@ const SearchResult = () => {
                         {renderStars(product.stars)}
                         <span className="reviews ms-2">({product.reviews || 0})</span>
                       </div>
+                      <div className="product-bottom d-flex mt-2">
+                        {[product.color1, product.color2].map(
+                          (color, index) =>
+                            color && (
+                              <span
+                                key={index}
+                                onClick={() => selectColor(product.id, color)}
+                                style={{ backgroundColor: color }}
+                                className={selectedColors[product.id] === color ? "active" : ""}
+                              ></span>
+                            )
+                        )}
+                      </div>
                     </div>
                   </div>
                 </Col>
               ))
             ) : (
-              <div>No products found matching "{productIdentifier}"</div>
+              <div className="text-center mt-4">No products found matching "{productIdentifier}"</div>
             )}
           </Row>
+
         </Container>
       </section>
     </section>

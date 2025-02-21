@@ -6,7 +6,7 @@
 #ExploreProducts .product .product-title{
     margin-top: 3rem;
 }
-#ExploreProducts .product-bottom .active{
+#ExploreProducts .product-bottom .active , #SearchResult .product-bottom .active{
     position: relative;
     border: 1px solid black;
 }

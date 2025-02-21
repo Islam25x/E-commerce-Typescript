@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { addAllCart } from "./CartSlice";
 
 type FavouriteProduct = {
     id: number;
@@ -19,6 +18,7 @@ type FavouriteProduct = {
     salebg: string;
     salepersent: string;
     stars: number;
+    Bcategory: string
 };
 
 type InitialFavouritesState = {

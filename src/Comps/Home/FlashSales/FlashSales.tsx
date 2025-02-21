@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
@@ -33,7 +33,7 @@ type Product = {
     stars: number;
 }
 
-const FlashSales= () => {
+const FlashSales = () => {
     // Timer
     const [timer, setTimer] = useState<number>(305400);
 
@@ -141,7 +141,9 @@ const FlashSales= () => {
                                         <p className="product-title">{sale.name}</p>
                                         <div className="price d-flex">
                                             <p className="curr-price">{Convert(sale.new_price)}</p>
-                                            <p className="prev-price">{Convert(sale.old_price)}</p>
+                                            {sale.old_price !== null && (
+                                                <p className="prev-price">{Convert(sale.old_price)}</p>
+                                            )}
                                         </div>
                                         <div className="star-ctn d-flex">{renderStars(sale.stars)}</div>
                                     </div>
@@ -167,7 +169,9 @@ const FlashSales= () => {
                                         <p className="product-title">{sale.name}</p>
                                         <div className="price d-flex">
                                             <p className="curr-price">{Convert(sale.new_price)}</p>
-                                            <p className="prev-price">{Convert(sale.old_price)}</p>
+                                            {sale.old_price !== null && (
+                                                <p className="prev-price">{Convert(sale.old_price)}</p>
+                                            )}
                                         </div>
                                         <div className="star-ctn d-flex">{renderStars(sale.stars)}</div>
                                     </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { fetchProducts } from "../../Redux/CartSlice";
 import { useAppDispatch, useAppSelector } from "../../Redux/Store";
@@ -6,44 +6,53 @@ import { renderStars } from "../../Redux/CartSlice";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Grid, Navigation } from "swiper/modules";
 import Convert from "../../functions/FormatCurrncy";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { Swiper as SwiperClass } from "swiper";
 
-import 'swiper/swiper-bundle.css';
+import "swiper/swiper-bundle.css";
 import "./ExploreProducts.css";
 import "../FlashSales/FlashSales.css";
 
-const ExploreProducts = () => {
+interface Product {
+    id: number;
+    name: string;
+    image: string;
+    Type: string;
+    salepersent?: string;
+    new_price: number;
+    stars: number;
+    reviews?: number;
+    color1: string;
+    color2: string;
+}
+
+const ExploreProducts: React.FC = () => {
     const [viewAll, setViewAll] = useState<boolean>(false);
     const dispatch = useAppDispatch();
-    const navigate = useNavigate(); // Added navigate hook for routing
 
+    // Fetch products from Redux store
     const { products } = useAppSelector((state) => state.cart);
-    const Explore = products ? products.filter((product) => product.Type === "Explore") : [];
+    const Explore: Product[] = products ? products.filter((product: Product) => product.Type === "Explore") : [];
 
     useEffect(() => {
         dispatch(fetchProducts());
     }, [dispatch]);
 
-    const swiperRef = useRef(null);
+    // Define swiper reference with correct type
+    const swiperRef = useRef<SwiperClass | null>(null);
     const [selectedColors, setSelectedColors] = useState<{ [key: number]: string }>({});
 
-    const handleNext = () => {
-        if (swiperRef.current) swiperRef.current.swiper.slideNext();
-    };
+    // Handle Swiper navigation
+    const handleNext = () => swiperRef.current?.slideNext();
+    const handlePrev = () => swiperRef.current?.slidePrev();
 
-    const handlePrev = () => {
-        if (swiperRef.current) swiperRef.current.swiper.slidePrev();
-    };
-
+    // Handle color selection
     const selectColor = (productId: number, color: string) => {
         setSelectedColors((prevColors) => ({
             ...prevColors,
             [productId]: color,
         }));
     };
-
-
-
 
     return (
         <section id="ExploreProducts">
@@ -64,7 +73,7 @@ const ExploreProducts = () => {
                 {!viewAll ? (
                     <Swiper
                         className="position-relative"
-                        ref={swiperRef}
+                        onSwiper={(swiper) => (swiperRef.current = swiper)}
                         modules={[Grid, Navigation]}
                         breakpoints={{
                             320: { slidesPerView: 2, spaceBetween: 10, grid: { rows: 2 } },
@@ -74,7 +83,7 @@ const ExploreProducts = () => {
                         }}
                         spaceBetween={30}
                         slidesPerView={4}
-                        grid={{ rows: 2, fill: "row" }} // Ensures two rows
+                        grid={{ rows: 2, fill: "row" }}
                         navigation={{ nextEl: ".swiper-button.next", prevEl: ".swiper-button.prev" }}
                     >
                         {Explore.slice(0, 8).map((item) => (
@@ -82,11 +91,11 @@ const ExploreProducts = () => {
                                 <div className="product">
                                     <div className="product-top d-flex justify-content-between">
                                         <img src={item.image} alt={item.name} />
-                                        {item.salepersent && (
+                                        {item.salepersent ? (
                                             <span className="sale-persent" style={{ backgroundColor: "#00FF66" }}>
                                                 {item.salepersent}
                                             </span>
-                                        )}
+                                        ):(<div></div>)}
                                         <div className="icons">
                                             <Link to="/SignUp">
                                                 <i className="fa-regular fa-heart"></i>
@@ -132,11 +141,11 @@ const ExploreProducts = () => {
                                 <div className="product">
                                     <div className="product-top d-flex justify-content-between">
                                         <img src={item.image} alt={item.name} />
-                                        {item.salepersent && (
+                                        {item.salepersent ? (
                                             <span className="sale-persent" style={{ backgroundColor: "#00FF66" }}>
                                                 {item.salepersent}
                                             </span>
-                                        )}
+                                        ):(<div></div>)}
                                         <div className="icons">
                                             <Link to="/SignUp">
                                                 <i className="fa-regular fa-heart"></i>

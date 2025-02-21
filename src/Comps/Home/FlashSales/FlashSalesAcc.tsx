@@ -31,6 +31,7 @@ type Product = {
     salebg: string;
     salepersent: string;
     stars: number;
+    Bcategory: string
 };
 const FlashSalesAcc = () => {
     // Timer
@@ -74,7 +75,7 @@ const FlashSalesAcc = () => {
 
 
     // Reference to the Swiper instance
-    const swiperRef = useRef(null);
+    const swiperRef = useRef<any>(null);
 
     // Handle Next and Prev navigation
     const handleNext = () => {
@@ -162,7 +163,7 @@ const FlashSalesAcc = () => {
                                                     className="fa-regular fa-heart"
                                                 ></i>
                                             )}
-                                            <Link onClick={() => dispatch(getProductById(item))} to={`/Description/${item.id}`}>
+                                            <Link onClick={() => dispatch(getProductById(item.id))} to={`/Description/${item.id}`}>
                                                 <i className="fa-regular fa-eye"></i>
                                             </Link>
                                         </div>

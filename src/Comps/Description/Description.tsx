@@ -16,19 +16,27 @@ import "./Description.css";
 interface Product {
   id: number;
   name: string;
-  category: string;
   image: string;
   description: string;
-  new_price: number;
   InStock: boolean;
-  count?: number;
-  color1?: string;
-  color2?: string;
-  pices: number;
+  Sale: boolean;
+  Type: string;
+  category: string;
+  color1: string;
+  color2: string;
+  new_price: number;
+  old_price: number | null;
+  quantity: number;
+  reviews: number;
+  salebg: string;
+  salepersent: string;
+  stars: number;
+  Bcategory: string
 }
 
 const Description: React.FC = () => {
-  const { productId } = useParams<{ productId: string }>();
+  const { productId } = useParams(); 
+  const productIdNum = Number(productId); // ✅ تحويل productId إلى رقم
   const dispatch = useAppDispatch();
   const [selectedSize, setSelectedSize] = useState<string>("M");
   const [selectedColors, setSelectedColors] = useState<{ [key: number]: string }>({});
@@ -36,17 +44,16 @@ const Description: React.FC = () => {
   const handleSizeChange = (size: string) => setSelectedSize(size);
 
   const product = useAppSelector((state) =>
-    state.cart.products.find((p: Product) => p.id === parseInt(productId))
+    state.cart.products.find((p: Product) => p.id === productIdNum) // ✅ استخدام الرقم بدلاً من string
   );
   const cartItems = useAppSelector((state) => state.cart.cart);
   const favourites: Product[] = useAppSelector((state) => state.favourites.favourites);
   const isInCart = (id: number) => cartItems.some((item) => item.id === id);
   const IsAddedFav =  (id: number) => favourites.some((item) => item.id === id);
 
-
   useEffect(() => {
-    if (!product) dispatch(getProductById(Number(productId)));
-  }, [dispatch, productId, product]);
+    if (!product) dispatch(getProductById(productIdNum)); // ✅ التأكد أن getProductById يستخدم number
+  }, [dispatch, productIdNum, product]); 
 
   if (!product) return <div>Product not found</div>;
 
@@ -130,11 +137,11 @@ const Description: React.FC = () => {
                     ):
                     (
                       <>
-                    <button className="disabledMinus" disabled={true} onClick={() => dispatch(decreaseProduct(product))}>
+                    <button className="disabledMinus" disabled={true}>
                     <i className="fa-solid fa-minus"></i>
                     </button>
                     <span>{quantity}</span>
-                    <button className="disabledPlus"  disabled={true} onClick={() => dispatch(increaseProduct(product))}>
+                    <button className="disabledPlus" disabled={true}>
                       <i className="fa-solid fa-plus"></i>
                     </button>
                       </>
@@ -150,39 +157,17 @@ const Description: React.FC = () => {
                 </button>
                 <div className="heart">
                   {IsAddedFav(product.id) ? (
-                    <i
-                      className="fa-regular fa-heart active"
+                    <i className="fa-regular fa-heart active"
                       onClick={() => dispatch(removeFavourite(product))}
                     ></i>
                   ) : (
-                    <i
-                      className="fa-regular fa-heart"
+                    <i className="fa-regular fa-heart"
                       onClick={() =>dispatch(addFavourite(product))}
                     ></i>
                   )}
-                  </div>
-              </div>
-              <div className="des-bottom">
-                <div className="first d-flex">
-                  <div className="icon">
-                    <i className="fa-solid fa-truck-fast"></i>
-                  </div>
-                  <div className="first-des">
-                    <h6>Free Delivery</h6>
-                    <p>Enter your postal code for Delivery Availability</p>
-                  </div>
-                </div>
-                <div className="sec d-flex">
-                  <div className="icon">
-                    <i className="fa-solid fa-rotate"></i>
-                  </div>
-                  <div className="sec-des">
-                    <h6>Return Delivery</h6>
-                    <p>Free 30 Days Delivery Returns. <a href="#">Details</a></p>
-                  </div>
                 </div>
               </div>
-              </div>
+            </div>
           </Col>
         </Row>
       </Container>

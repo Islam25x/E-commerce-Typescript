@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { fetchProducts, removeFromCart, addToCart, getProductById , renderStars } from "../../Redux/CartSlice";
 import { Swiper, SwiperSlide } from "swiper/react";
