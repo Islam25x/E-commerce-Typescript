@@ -1,4 +1,3 @@
-import React from 'react'
 import NavHome from '../nav/NavHome'
 import HomeTop from './HomeTop/HomeTop'
 import FlashSales from './FlashSales/FlashSales'

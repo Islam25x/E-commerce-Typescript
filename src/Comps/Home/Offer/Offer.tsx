@@ -50,7 +50,7 @@ const Offer = () => {
                                 </div>
                             </div>
                             <Link to='/SignUp'>
-                            <button className="Buy-Now" variant="success">
+                            <button className="Buy-Now" >
                                 Buy Now!
                             </button>
                             </Link>

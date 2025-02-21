@@ -10,7 +10,7 @@ import {
   removeFromCart,
   getProductById,
 } from "../Redux/CartSlice";
-import { addFavourite , removeFavourite } from "../Redux/FavouriteSlice";
+import { addFavourite, removeFavourite } from "../Redux/FavouriteSlice";
 import "./Description.css";
 
 interface Product {
@@ -22,38 +22,44 @@ interface Product {
   Sale: boolean;
   Type: string;
   category: string;
-  color1: string;
-  color2: string;
+  color1?: string;
+  color2?: string;
   new_price: number;
   old_price: number | null;
   quantity: number;
   reviews: number;
-  salebg: string;
-  salepersent: string;
+  salebg?: string;
+  salepersent?: string;
   stars: number;
-  Bcategory: string
+  Bcategory?: string;
+  pices: number;
 }
 
 const Description: React.FC = () => {
-  const { productId } = useParams(); 
-  const productIdNum = Number(productId); // ✅ تحويل productId إلى رقم
+  const { productId } = useParams<{ productId: string }>();
+  const productIdNum = Number(productId);
   const dispatch = useAppDispatch();
+  
   const [selectedSize, setSelectedSize] = useState<string>("M");
   const [selectedColors, setSelectedColors] = useState<{ [key: number]: string }>({});
 
   const handleSizeChange = (size: string) => setSelectedSize(size);
 
   const product = useAppSelector((state) =>
-    state.cart.products.find((p: Product) => p.id === productIdNum) // ✅ استخدام الرقم بدلاً من string
+    state.cart.products.find((p: Product) => p.id === productIdNum)
   );
+
   const cartItems = useAppSelector((state) => state.cart.cart);
-  const favourites: Product[] = useAppSelector((state) => state.favourites.favourites);
+  const favourites = useAppSelector((state) => state.favourites.favourites);
+  
   const isInCart = (id: number) => cartItems.some((item) => item.id === id);
-  const IsAddedFav =  (id: number) => favourites.some((item) => item.id === id);
+  const isAddedToFav = (id: number) => favourites.some((item) => item.id === id);
 
   useEffect(() => {
-    if (!product) dispatch(getProductById(productIdNum)); // ✅ التأكد أن getProductById يستخدم number
-  }, [dispatch, productIdNum, product]); 
+    if (!product) {
+      dispatch(getProductById(productIdNum));
+    }
+  }, [dispatch, productIdNum, product]);
 
   if (!product) return <div>Product not found</div>;
 
@@ -90,7 +96,10 @@ const Description: React.FC = () => {
               <h3>{product.name}</h3>
               <div className="star-ctn d-flex">
                 <span className="count ms-2">({product.pices || 0})</span>
-                <span className="count ms-2" style={{ color: product.pices > 0 ? "green" : "red" }}>
+                <span
+                  className="count ms-2"
+                  style={{ color: product.pices > 0 ? "green" : "red" }}
+                >
                   {product.pices > 0 ? " | In Stock" : " | Out of Stock"}
                 </span>
               </div>
@@ -115,7 +124,11 @@ const Description: React.FC = () => {
                 <h6 className="mt-2">Size:</h6>
                 <ul className="d-flex" style={{ marginLeft: "-2rem" }}>
                   {["XS", "S", "M", "L", "XL"].map((size) => (
-                    <li key={size} onClick={() => handleSizeChange(size)} className={selectedSize === size ? "active" : ""}>
+                    <li
+                      key={size}
+                      onClick={() => handleSizeChange(size)}
+                      className={selectedSize === size ? "active" : ""}
+                    >
                       {size}
                     </li>
                   ))}
@@ -123,47 +136,49 @@ const Description: React.FC = () => {
               </div>
               <div className="cart d-flex">
                 <div className="count d-flex">
-                  {
-                    isInCart(product.id) ? (
-                      <>
-                        <button className="minus" disabled={quantity === 1} onClick={() => dispatch(decreaseProduct(product))}>
+                  {isInCart(product.id) ? (
+                    <>
+                      <button
+                        className="minus"
+                        disabled={quantity === 1}
+                        onClick={() => dispatch(decreaseProduct(product))}
+                      >
                         <i className="fa-solid fa-minus"></i>
-                        </button>
-                        <span>{quantity}</span>
-                        <button className="plus" onClick={() => dispatch(increaseProduct(product))}>
-                          <i className="fa-solid fa-plus"></i>
-                        </button>   
-                      </>
-                    ):
-                    (
-                      <>
-                    <button className="disabledMinus" disabled={true}>
-                    <i className="fa-solid fa-minus"></i>
-                    </button>
-                    <span>{quantity}</span>
-                    <button className="disabledPlus" disabled={true}>
-                      <i className="fa-solid fa-plus"></i>
-                    </button>
-                      </>
-                    )
-                  }
+                      </button>
+                      <span>{quantity}</span>
+                      <button className="plus" onClick={() => dispatch(increaseProduct(product))}>
+                        <i className="fa-solid fa-plus"></i>
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button className="disabledMinus" disabled={true}>
+                        <i className="fa-solid fa-minus"></i>
+                      </button>
+                      <span>{quantity}</span>
+                      <button className="disabledPlus" disabled={true}>
+                        <i className="fa-solid fa-plus"></i>
+                      </button>
+                    </>
+                  )}
                 </div>
                 <button
                   className="Buy mx-2"
                   style={{ background: isInCart(product.id) ? "green" : undefined }}
-                  onClick={() => dispatch(isInCart(product.id) ? removeFromCart(product) : addToCart(product))}
+                  onClick={() =>
+                    dispatch(isInCart(product.id) ? removeFromCart(product) : addToCart(product))
+                  }
                 >
                   {isInCart(product.id) ? "In Cart" : "Buy Now"}
                 </button>
                 <div className="heart">
-                  {IsAddedFav(product.id) ? (
-                    <i className="fa-regular fa-heart active"
+                  {isAddedToFav(product.id) ? (
+                    <i
+                      className="fa-regular fa-heart active"
                       onClick={() => dispatch(removeFavourite(product))}
                     ></i>
                   ) : (
-                    <i className="fa-regular fa-heart"
-                      onClick={() =>dispatch(addFavourite(product))}
-                    ></i>
+                    <i className="fa-regular fa-heart" onClick={() => dispatch(addFavourite(product))}></i>
                   )}
                 </div>
               </div>

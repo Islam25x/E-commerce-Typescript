@@ -17,13 +17,22 @@ interface Product {
     id: number;
     name: string;
     image: string;
+    description: string;
+    InStock: boolean;
+    Sale: boolean;
     Type: string;
-    salepersent?: string;
-    new_price: number;
-    stars: number;
-    reviews?: number;
+    category: string;
     color1: string;
     color2: string;
+    new_price: number;
+    old_price: number | null;
+    quantity: number;
+    reviews: number;
+    salebg?: string;
+    salepersent?: string;
+    stars: number;
+    Bcategory?: string;
+    pices: number;
 }
 
 const ExploreProducts: React.FC = () => {
@@ -32,7 +41,15 @@ const ExploreProducts: React.FC = () => {
 
     // Fetch products from Redux store
     const { products } = useAppSelector((state) => state.cart);
-    const Explore: Product[] = products ? products.filter((product: Product) => product.Type === "Explore") : [];
+    const Explore: Product[] = products
+        ? products
+            .filter((product): product is Product => product.Type === "Explore" && product.color1 !== undefined && product.color2 !== undefined)
+            .map((product) => ({
+                ...product,
+                color1: product.color1 || "", // Ensure color1 is always a string
+                color2: product.color2 || "", // Ensure color2 is always a string
+            }))
+        : [];
 
     useEffect(() => {
         dispatch(fetchProducts());
@@ -95,7 +112,7 @@ const ExploreProducts: React.FC = () => {
                                             <span className="sale-persent" style={{ backgroundColor: "#00FF66" }}>
                                                 {item.salepersent}
                                             </span>
-                                        ):(<div></div>)}
+                                        ) : (<div></div>)}
                                         <div className="icons">
                                             <Link to="/SignUp">
                                                 <i className="fa-regular fa-heart"></i>
@@ -145,7 +162,7 @@ const ExploreProducts: React.FC = () => {
                                             <span className="sale-persent" style={{ backgroundColor: "#00FF66" }}>
                                                 {item.salepersent}
                                             </span>
-                                        ):(<div></div>)}
+                                        ) : (<div></div>)}
                                         <div className="icons">
                                             <Link to="/SignUp">
                                                 <i className="fa-regular fa-heart"></i>

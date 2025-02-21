@@ -28,12 +28,18 @@ const NavLogSign = () => {
                                 className="me-2"
                                 aria-label="Search"
                             />
-                            <i className="fa-solid fa-magnifying-glass" style={{ color: "black" }}></i>
+                            <i className="fa-solid fa-magnifying-glass" style={{
+                                color: "black", backgroundColor: '#f5f5f5',
+                                padding: '0.3rem',
+                                position: 'absolute',
+                                right: '8%',
+                                top: '0.4rem'
+                            }}></i>
                         </Form>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-        </header>
+        </header >
     )
 }
 

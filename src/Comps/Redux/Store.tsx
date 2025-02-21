@@ -1,41 +1,47 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { useDispatch, useSelector, TypedUseSelectorHook } from "react-redux";
 import CartSliceReducer from "./CartSlice";
 import FavouriteSliceReducer from "./FavouriteSlice";
 import userReducer from "./LoginSystem/UserSlice";
-import storage from "redux-persist/lib/storage"; // Uses localStorage
+import storage from "redux-persist/lib/storage"; // Uses localStorage for persistence
 import { persistReducer, persistStore } from "redux-persist";
-import { combineReducers } from "redux";
 
-// Configure Persist Storage
+// 🔹 Configure persistence settings
 const persistConfig = {
-    key: "Users", // Storage key
-    storage,
+    key: "root", // Root key for storage
+    storage, // Define storage type (localStorage)
+    whitelist: ["user", "cart", "favourites"], // Only persist these slices
 };
 
-// Combine Reducers
+// 🔹 Combine all reducers
 const rootReducer = combineReducers({
-    cart: CartSliceReducer, 
-    user: userReducer, 
-    favourites: FavouriteSliceReducer,  
+    cart: CartSliceReducer,
+    user: userReducer,
+    favourites: FavouriteSliceReducer,
 });
 
-// Apply persistReducer to rootReducer
+// 🔹 Apply `persistReducer` to the rootReducer
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-// Configure Store
+// 🔹 Configure Redux store
 export const store = configureStore({
-    reducer: persistedReducer, // Fix: persist reducer should be passed here
+    reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: {
+                ignoredActions: ["persist/PERSIST"], // Ignore persistence actions for serializability check
+            },
+        }),
 });
 
-// Persistor for Redux Persist
+// 🔹 Initialize Redux Persist for state persistence
 export const persistor = persistStore(store);
 
-// Define Types
+// ✅ Define types for better TypeScript support
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
-// Create Typed Hooks
+// ✅ Create typed hooks for use throughout the app
 export const useAppDispatch: () => AppDispatch = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 

@@ -113,14 +113,6 @@
 .dropdown-item:hover > i {
   color: black !important;
 }
-#NavLogSign form i {
-  color: black;
-  background-color: #f5f5f5;
-  padding: 0.3rem;
-  position: absolute;
-  right: 8%;
-  top: 0.4rem;
-}
 /* Mobile */
 @media (max-width: 767px) {
   #NavLogSign input {
