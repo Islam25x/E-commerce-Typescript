@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Convert from "../../functions/FormatCurrncy";
@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from "../../Redux/Store";
 import { fetchProducts, removeFromCart, addToCart, getProductById, renderStars } from "../../Redux/CartSlice";
 import { Link } from "react-router";
 
-// import "@fortawesome/fontawesome-free/css/all.min.css"; // Import FontAwesome CSS
+import "@fortawesome/fontawesome-free/css/all.min.css"; // Import FontAwesome CSS
 import 'swiper/swiper-bundle.css';
 import "./BestSelling.css";
 
@@ -29,6 +29,7 @@ type Product = {
     salebg: string;
     salepersent: string;
     stars: number;
+    Bcategory: string
 };
 const BestSellingAcc = () => {
 
@@ -97,7 +98,7 @@ const BestSellingAcc = () => {
                                                     className="fa-regular fa-heart"
                                                 ></i>
                                             )}
-                                            <Link onClick={() => dispatch(getProductById(item))} to={`/Description/${item.id}`}>
+                                            <Link onClick={() => dispatch(getProductById(item.id))} to={`/Description/${item.id}`}>
                                                 <i className="fa-regular fa-eye"></i>
                                             </Link>
                                         </div>
@@ -151,7 +152,7 @@ const BestSellingAcc = () => {
                                                     className="fa-regular fa-heart"
                                                 ></i>
                                             )}
-                                            <Link onClick={() => dispatch(getProductById(item))} to={`/Description/${item.id}`}>
+                                            <Link onClick={() => dispatch(getProductById(item.id))} to={`/Description/${item.id}`}>
                                                 <i className="fa-regular fa-eye"></i>
                                             </Link>
                                         </div>

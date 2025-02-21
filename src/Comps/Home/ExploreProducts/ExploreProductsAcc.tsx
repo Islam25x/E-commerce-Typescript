@@ -31,6 +31,7 @@ type Product = {
     salebg: string;
     salepersent: string;
     stars: number;
+    Bcategory: string
 };
 
 const ExploreProductsAcc: React.FC = () => {

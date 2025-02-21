@@ -1,55 +1,47 @@
-import { useState } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 import { Container, Form, Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../Redux/LoginSystem/UserSlice";
-import { useAppDispatch, useAppSelector } from '../Redux/Store'
-import { useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../Redux/Store";
 import { getProductByName } from "../Redux/CartSlice";
 
-const NavHomeAcc = () => {
-  const [searchQuery, setSearchQuery] = useState("");
+const NavHomeAcc: React.FC = () => {
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
   const FavProducts = useAppSelector((state) => state.favourites.favourites);
+  const cartItems = useAppSelector((state) => state.cart.cart);
 
-
-  // Handle search input change
-  const handleSearchChange = (e) => {
+  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
   };
 
-  // Handle form submission (search)
-const [loading, setLoading] = useState(false);
+  const handleSearchSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
 
-const dispatch = useAppDispatch()
+    try {
+      const fetchedProducts = await dispatch(getProductByName(searchQuery));
+      setLoading(false);
 
-const handleSearchSubmit = async (e) => {
-  e.preventDefault();
-  setLoading(true);
-  
-  // Search for products by name
-  const fetchedProducts = dispatch(getProductByName(searchQuery));
+      if (!fetchedProducts) {
+        alert("No products found!");
+        return;
+      }
 
-  setLoading(false);
-  
-  if (fetchedProducts.length === 0) {
-    alert("No products found!");
-    return;
-  }
+      navigate(`/SearchResult/${searchQuery.trim()}`);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      setLoading(false);
+    }
+  };
 
-  navigate(`/SearchResult/${searchQuery.trim()}`);
-};
-
-
-<button type="submit" disabled={loading}>
-  {loading ? "Searching..." : <i className="Search-i fa-solid fa-magnifying-glass"></i>}
-</button>
-
-  const cartItems = useAppSelector((state)=> state.cart.cart)
-
-  const handleLogOut = ()=>{
+  const handleLogOut = () => {
     dispatch(logout());
-    navigate('/Login')
-  }
+    navigate("/Login");
+  };
 
   return (
     <header id="NavLogSign">
@@ -60,20 +52,13 @@ const handleSearchSubmit = async (e) => {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
-            <Nav
-              className="me-auto my-2 my-lg-0"
-              style={{ maxHeight: "100px" }}
-              navbarScroll
-            >
+            <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: "100px" }} navbarScroll>
               <Link to="/">Home</Link>
               <Link to="/Contact">Contact</Link>
               <Link to="/About">About</Link>
               <Link to="/SignUp">Sign Up</Link>
             </Nav>
-            <Form
-              className="d-flex position-relative"
-              onSubmit={handleSearchSubmit}
-            >
+            <Form className="d-flex position-relative" onSubmit={handleSearchSubmit}>
               <Form.Control
                 type="search"
                 placeholder="What are you looking for?"
@@ -82,7 +67,9 @@ const handleSearchSubmit = async (e) => {
                 value={searchQuery}
                 onChange={handleSearchChange}
               />
-              <i className="Search-i fa-solid fa-magnifying-glass"></i>
+              <button type="submit" disabled={loading} className="search-btn">
+                {loading ? "Searching..." : <i className="Search-i fa-solid fa-magnifying-glass"></i>}
+              </button>
               <Link to="/Favorite">
                 <span>{FavProducts.length}</span>
                 <i className="fa-regular fa-heart"></i>

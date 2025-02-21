@@ -6,7 +6,6 @@ import userReducer from "./LoginSystem/UserSlice";
 import storage from "redux-persist/lib/storage"; // Uses localStorage
 import { persistReducer, persistStore } from "redux-persist";
 import { combineReducers } from "redux";
-import logger from "redux-logger";
 
 // Configure Persist Storage
 const persistConfig = {
@@ -27,7 +26,6 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 // Configure Store
 export const store = configureStore({
     reducer: persistedReducer, // Fix: persist reducer should be passed here
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }).concat(logger),
 });
 
 // Persistor for Redux Persist
