@@ -19,16 +19,17 @@ type CartProduct = {
   Sale: boolean;
   Type: string;
   category: string;
-  color1: string;
-  color2: string;
+  color1?: string;
+  color2?: string;
   new_price: number;
   old_price: number | null;
   quantity: number;
   reviews: number;
-  salebg: string;
-  salepersent: string;
+  salebg?: string;
+  salepersent?: string;
   stars: number;
-  Bcategory: string;
+  Bcategory?: string;
+  pices: number;
 };
 
 const SearchResult = () => {
