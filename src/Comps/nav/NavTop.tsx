@@ -1,23 +1,28 @@
-import { Container } from 'react-bootstrap';
-import './NavTop.css'
-
+import { Container } from "react-bootstrap";
+import "./NavTop.css";
+import { useTranslation } from "react-i18next";
 const NavTop = () => {
+    const { t , i18n } = useTranslation();
+
+    const changeLanguage = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        i18n.changeLanguage(event.target.value);
+    };
+
     return (
-        <header id='NavTop'>
+        <header id="NavTop">
             <Container>
-                    <div className='d-flex justify-content-between'>
-                        <div></div>
-                        <span >
-                            Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!{" "}
-                            <a href="s">ShopNow</a>
-                        </span>
-                        <select>
-                            <option value="en">English</option>
-                            <option value="ar">العربية</option>
-                        </select>
-                    </div>
+                <div className="d-flex justify-content-between align-items-center">
+                    <span>
+                        {t("Summer Sale")} {" "} <a>{t("ShopNow")}</a>
+                    </span>
+                    <select onChange={changeLanguage} defaultValue={i18n.language}>
+                        <option value="en">English</option>
+                        <option value="ar">العربية</option>
+                    </select>
+                </div>
             </Container>
         </header>
     );
 };
-export default NavTop
+
+export default NavTop;

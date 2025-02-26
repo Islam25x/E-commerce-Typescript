@@ -8,6 +8,10 @@
     color: #fff;
     padding: .7rem 0;
 }
+#NavTop span{
+    width: 100%;
+    text-align: center;
+}
 #NavTop span a{
     margin-left: 1rem;
     color: #fff;

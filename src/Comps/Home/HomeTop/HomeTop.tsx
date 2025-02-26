@@ -4,11 +4,11 @@ import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import { Link } from "react-router-dom";
-import { useAppSelector , useAppDispatch } from "../../Redux/Store";
+import { useTranslation } from "react-i18next";
+import { useAppSelector, useAppDispatch } from "../../Redux/Store";
 import { getProductByCategory } from "../../Redux/CartSlice";
 
-import 'swiper/swiper-bundle.css';
-
+import "swiper/swiper-bundle.css";
 import "./HomeTop.css";
 
 // Define types for categories and carousel items
@@ -26,6 +26,8 @@ interface CarouselItem {
 }
 
 const HomeTop = () => {
+  const { t } = useTranslation();
+
   // fetch categories
   const [categories, setCategories] = useState<Category[]>([]);
 
@@ -48,7 +50,9 @@ const HomeTop = () => {
   useEffect(() => {
     const fetchCarousel = async () => {
       try {
-        const response = await axios.get<CarouselItem[]>("Assets/carousel.json");
+        const response = await axios.get<CarouselItem[]>(
+          "Assets/carousel.json"
+        );
         console.log("carousel fetched:", response.data);
         setCarousel(response.data);
       } catch (error) {
@@ -57,8 +61,8 @@ const HomeTop = () => {
     };
     fetchCarousel();
   }, []);
-  const dispatch = useAppDispatch()
-
+  
+  const dispatch = useAppDispatch();
   const IsLogin = useAppSelector((state) => state.user.IsLogin);
 
   return (
@@ -72,11 +76,13 @@ const HomeTop = () => {
                   categories.map((category) => (
                     <li className="Cats__list text-dark" key={category.id}>
                       <Link
-                        onClick={() => dispatch( getProductByCategory(category.catTitle))}
+                        onClick={() =>
+                          dispatch(getProductByCategory(category.catTitle))
+                        }
                         to={`/CategoryProducts/${category.catTitle}`}
                         style={{ textDecoration: "none", color: "inherit" }}
                       >
-                        {category.catTitle}
+                        {t(`categories.${category.catTitle}`)}
                       </Link>
                     </li>
                   ))
@@ -87,7 +93,7 @@ const HomeTop = () => {
                         to={`/SignUp`}
                         style={{ textDecoration: "none", color: "inherit" }}
                       >
-                        {category.catTitle}
+                        {t(`categories.${category.catTitle}`)}
                       </Link>
                     </li>
                   ))
@@ -117,11 +123,11 @@ const HomeTop = () => {
                   <div className="silde-content">
                     <div className="top d-flex">
                       <img src={slide.TitleImage} alt={slide.TitleImage} />
-                      <p className="title">{slide.carTitle}</p>
+                      <p className="title">{t(`${slide.carTitle}`)}</p>
                     </div>
-                    <h1>{slide.carContent}</h1>
+                    <h1>{t(`carousel.${slide.carContent}`)}</h1>
                     <div className="bottom d-flex">
-                      <button>Shop Now</button>
+                      <button>{t("Shop Now")}</button>
                       <i className="fa-solid fa-arrow-right-long"></i>
                     </div>
                   </div>

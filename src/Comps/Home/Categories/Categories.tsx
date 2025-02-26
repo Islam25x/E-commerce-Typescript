@@ -5,10 +5,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { Link } from "react-router-dom";
 import { getProductByBrowseCategory } from "../../Redux/CartSlice";
+import { useTranslation } from "react-i18next";
 
 import "./Categories.css";
 import { useAppDispatch, useAppSelector } from "../../Redux/Store";
-
 
 interface CategoryType {
     id: number;
@@ -17,9 +17,9 @@ interface CategoryType {
 }
 
 const Categories = () => {
+    const { t } = useTranslation();
     const [categories, setCategories] = useState<CategoryType[]>([]);
 
-    
     useEffect(() => {
         const fetchCategories = async () => {
             try {
@@ -49,9 +49,9 @@ const Categories = () => {
     return (
         <section id="Categories">
             <Container>
-                <span className="cats">Categories</span>
+                <span className="cats">{t('Categories')}</span>
                 <div className="left-side d-flex justify-content-between flex-wrap mt-4">
-                    <h1>Browse By Category</h1>
+                    <h1>{t('browse_by_category')}</h1>
                     <div className="swiper-nav-buttons">
                         <button onClick={handlePrev} className="swiper-button prev">
                             <i className="fas fa-chevron-left"></i>
@@ -85,17 +85,16 @@ const Categories = () => {
                                     >
                                         <div className="cat-ctn">
                                             <i className={category.icon}></i>
-                                            <p>{category.title}</p>
+                                            <p>{t(category.title)}</p>
                                         </div>
                                     </Link> :
                                     <Link to="/SignUp" style={{ textDecoration: "none" }}>
                                         <div className="cat-ctn">
                                             <i className={category.icon}></i>
-                                            <p>{category.title}</p>
+                                            <p>{t(category.title)}</p>
                                         </div>
                                     </Link>
                             }
-
                         </SwiperSlide>
                     ))}
                 </Swiper>

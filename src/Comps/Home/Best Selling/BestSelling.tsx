@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Convert from "../../functions/FormatCurrncy";
-import { fetchProducts } from "../../Redux/CartSlice";
+import { addFavourite, removeFavourite } from "../../Redux/FavouriteSlice";
 import { useAppDispatch, useAppSelector } from "../../Redux/Store";
+import { fetchProducts, removeFromCart, addToCart, getProductById, renderStars } from "../../Redux/CartSlice";
 import { Link } from "react-router";
-import { renderStars } from "../../Redux/CartSlice";
+import { useTranslation } from "react-i18next";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import 'swiper/swiper-bundle.css';
@@ -33,29 +34,37 @@ type Product = {
     pices: number;
 }
 const BestSelling = () => {
-    // Fetch BestSellings
+    const { t } = useTranslation();
+
+    // Fetch setBestSelling
+
     const dispatch = useAppDispatch();
+    const cartItems: Product[] = useAppSelector((state) => state.cart.cart);
+    const favourites: Product[] = useAppSelector((state) => state.favourites.favourites);
+    const IsLogin = useAppSelector((state) => state.user.IsLogin)
     const { products } = useAppSelector((state) => state.cart);
     const BestSellings: Product[] = products ? products.filter((product) => product.Type === 'BestSelling') : [];
-
     useEffect(() => {
         dispatch(fetchProducts());
     }, [dispatch]);
+    const isInCart = (cartItemId: number) => cartItems.some((cartItem) => cartItem.id === cartItemId);
+    const isInFavorite = (favouriteId: number) => favourites.some((favourite) => favourite.id === favouriteId);
 
     // State for viewAll
+
     const [viewAll, setViewAll] = useState(false);
 
     return (
         <section id="BestSelling">
             <Container>
-                <span className="Month">This Month</span>
+                <span className="Month">{t('this_month')}</span>
                 <div className="BestSelling-Top d-flex justify-content-between flex-wrap">
-                    <h2>Best Selling Products</h2>
+                    <h2>{t('best_selling_products')}</h2>
                     <button
                         className="View-All"
                         onClick={() => setViewAll((prev) => !prev)}
                     >
-                        {viewAll ? "Back to Swiper" : "View All"}
+                        {viewAll ? t('back_to_swiper') : t('view_all')}
                     </button>
                 </div>
                 {!viewAll ? (
@@ -74,26 +83,54 @@ const BestSelling = () => {
                             <SwiperSlide key={BestSelling.id}>
                                 <div className="product">
                                     <div className="product-top d-flex justify-content-between">
-                                        <img src={BestSelling.image} alt={BestSelling.name} />
+                                        <img src={BestSelling.image} alt={t(BestSelling.name)} />
                                         <div></div>
                                         <div className="icons">
-                                            <Link to="/SignUp">
-                                                <i className="fa-regular fa-heart"></i>
-                                            </Link>
-                                            <Link to="/SignUp">
-                                                <i className="fa-regular fa-eye"></i>
-                                            </Link>
+                                            {
+                                                IsLogin ? (
+                                                    isInFavorite(BestSelling.id) ? (
+                                                        <i onClick={() => dispatch(removeFavourite(BestSelling))} className="fa-solid fa-heart active"></i>
+                                                    ) : (
+                                                        <i onClick={() => dispatch(addFavourite(BestSelling))} className="fa-regular fa-heart"></i>
+                                                    )
+                                                ) : (
+                                                    <Link to="/SignUp">
+                                                        <i className="fa-regular fa-heart"></i>
+                                                    </Link>
+                                                )
+                                            }
+                                            {
+                                                IsLogin ? (
+                                                    <Link onClick={() => dispatch(getProductById(BestSelling.id))} to={`/Description/${BestSelling.id}`}>
+                                                        <i className="fa-regular fa-eye"></i>
+                                                    </Link>
+                                                ) : (
+                                                    <Link to="/SignUp">
+                                                        <i className="fa-regular fa-eye"></i>
+                                                    </Link>
+                                                )
+                                            }
                                         </div>
                                     </div>
-                                    <Link
-                                        to="/SignUp"
-                                        className="addCart"
-                                        style={{ textDecoration: "none" }}
-                                    >
-                                        <p>Add To Cart</p>
-                                    </Link>
+                                    {
+                                        IsLogin ? (
+                                            isInCart(BestSelling.id) ? (
+                                                <div onClick={() => dispatch(removeFromCart(BestSelling))} className="RemoveCart">
+                                                    <p>{t('Remove_From_Cart')}</p>
+                                                </div>
+                                            ) : (
+                                                <div onClick={() => dispatch(addToCart(BestSelling))} className="addCart">
+                                                    <p>{t('add_to_cart')}</p>
+                                                </div>
+                                            )
+                                        ) : (
+                                            <Link to="/SignUp" className="addCart">
+                                                <p>{t("add_to_cart")}</p>
+                                            </Link>
+                                        )
+                                    }
                                     <div className="product-des">
-                                        <p className="product-title">{BestSelling.name}</p>
+                                        <p className="product-title">{t(BestSelling.name)}</p>
                                         <div className="price d-flex">
                                             <p className="curr-price">
                                                 {Convert(BestSelling.new_price)}
@@ -119,26 +156,54 @@ const BestSelling = () => {
                             <Col lg={3} md={6} sm={6} key={BestSelling.id}>
                                 <div className="product">
                                     <div className="product-top d-flex justify-content-between">
-                                        <img src={BestSelling.image} alt={BestSelling.name} />
+                                        <img src={BestSelling.image} alt={t(BestSelling.name)} />
                                         <div></div>
                                         <div className="icons">
-                                            <Link to="/SignUp">
-                                                <i className="fa-regular fa-heart"></i>
-                                            </Link>
-                                            <Link to="/SignUp">
-                                                <i className="fa-regular fa-eye"></i>
-                                            </Link>
+                                            {
+                                                IsLogin ? (
+                                                    isInFavorite(BestSelling.id) ? (
+                                                        <i onClick={() => dispatch(removeFavourite(BestSelling))} className="fa-solid fa-heart active"></i>
+                                                    ) : (
+                                                        <i onClick={() => dispatch(addFavourite(BestSelling))} className="fa-regular fa-heart"></i>
+                                                    )
+                                                ) : (
+                                                    <Link to="/SignUp">
+                                                        <i className="fa-regular fa-heart"></i>
+                                                    </Link>
+                                                )
+                                            }
+                                            {
+                                                IsLogin ? (
+                                                    <Link onClick={() => dispatch(getProductById(BestSelling.id))} to={`/Description/${BestSelling.id}`}>
+                                                        <i className="fa-regular fa-eye"></i>
+                                                    </Link>
+                                                ) : (
+                                                    <Link to="/SignUp">
+                                                        <i className="fa-regular fa-eye"></i>
+                                                    </Link>
+                                                )
+                                            }
                                         </div>
                                     </div>
-                                    <Link
-                                        to="/SignUp"
-                                        className="addCart"
-                                        style={{ textDecoration: "none" }}
-                                    >
-                                        <p>Add To Cart</p>
-                                    </Link>
+                                    {
+                                        IsLogin ? (
+                                            isInCart(BestSelling.id) ? (
+                                                <div onClick={() => dispatch(removeFromCart(BestSelling))} className="RemoveCart">
+                                                    <p>{t('Remove_From_Cart')}</p>
+                                                </div>
+                                            ) : (
+                                                <div onClick={() => dispatch(addToCart(BestSelling))} className="addCart">
+                                                    <p>{t('add_to_cart')}</p>
+                                                </div>
+                                            )
+                                        ) : (
+                                            <Link to="/SignUp" className="addCart">
+                                                <p>{t("add_to_cart")}</p>
+                                            </Link>
+                                        )
+                                    }
                                     <div className="product-des">
-                                        <p className="product-title">{BestSelling.name}</p>
+                                        <p className="product-title">{t(BestSelling.name)}</p>
                                         <div className="price d-flex">
                                             <p className="curr-price">
                                                 {Convert(BestSelling.new_price)}

@@ -1,9 +1,12 @@
-import { Container,Row,Col} from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import ScrollToTop from "react-scroll-to-top";
+import { useTranslation } from "react-i18next";
 
-import './Features.css'
+import './Features.css';
 
 const Features = () => {
+    const { t } = useTranslation();
+
     return (
         <section id='features'>
             <Container>
@@ -13,8 +16,8 @@ const Features = () => {
                             <div className="icon">
                                 <i className="fa-solid fa-truck-fast"></i>
                             </div>
-                            <h6>FREE AND FAST DELIVERY</h6>
-                            <p>Free delivery for all orders over $140</p>
+                            <h6>{t("FREE AND FAST DELIVERY")}</h6>
+                            <p>{t("Free delivery for all orders over $140")}</p>
                         </div>
                     </Col>
                     <Col lg={4} md={4} sm={12}>
@@ -22,8 +25,8 @@ const Features = () => {
                             <div className="icon">
                                 <i className="fa-solid fa-headphones"></i>
                             </div>
-                            <h6>24/7 CUSTOMER SERVICE</h6>
-                            <p>Friendly 24/7 customer support</p>
+                            <h6>{t("24/7 CUSTOMER SERVICE")}</h6>
+                            <p>{t("Friendly 24/7 customer support")}</p>
                         </div>
                     </Col>
                     <Col lg={4} md={4} sm={12}>
@@ -31,15 +34,15 @@ const Features = () => {
                             <div className="icon">
                                 <i className="fa-solid fa-clipboard-check"></i>
                             </div>
-                            <h6>MONEY BACK GUARANTEE</h6>
-                            <p>We return money within 30 days</p>
+                            <h6>{t("MONEY BACK GUARANTEE")}</h6>
+                            <p>{t("We return money within 30 days")}</p>
                         </div>
                     </Col>
                 </Row>
-                <ScrollToTop/>
+                <ScrollToTop />
             </Container>
         </section>
-    )
+    );
 }
 
-export default Features
+export default Features;

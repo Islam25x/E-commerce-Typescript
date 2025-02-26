@@ -1,23 +1,23 @@
 import NavHomeAcc from '../nav/navHomeAcc'
 import HomeTop from './HomeTop/HomeTop'
-import FlashSalesAcc from './FlashSales/FlashSalesAcc'
+import FlashSales from './FlashSales/FlashSales'
 import Categories from './Categories/Categories'
-import BestSellingAcc from './Best Selling/BestSellingAcc'
-import OfferAcc from './Offer/OfferAcc'
-import ExploreProductsAcc from './ExploreProducts/ExploreProductsAcc'
-import ArrivalAcc from './Arrival/ArrivalAcc'
+import BestSelling from './Best Selling/BestSelling'
+import Offer from './Offer/Offer'
+import ExploreProducts from './ExploreProducts/ExploreProducts'
+import Arrival from './Arrival/Arrival'
 import Features from './Features/Features'
 const HomeAcc = () => {
     return (
         <main id='HomeAcc'>
             <NavHomeAcc />
             <HomeTop />
-            <FlashSalesAcc />
+            <FlashSales />
             <Categories />
-            <BestSellingAcc />
-            <OfferAcc />
-            <ExploreProductsAcc />
-            <ArrivalAcc />
+            <BestSelling />
+            <Offer />
+            <ExploreProducts />
+            <Arrival />
             <Features />
         </main>
     )

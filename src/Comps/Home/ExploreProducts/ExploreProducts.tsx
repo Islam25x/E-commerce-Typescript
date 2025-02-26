@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { fetchProducts } from "../../Redux/CartSlice";
-import { useAppDispatch, useAppSelector } from "../../Redux/Store";
-import { renderStars } from "../../Redux/CartSlice";
+import { fetchProducts, removeFromCart, addToCart, getProductById, renderStars } from "../../Redux/CartSlice";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Grid, Navigation } from "swiper/modules";
 import Convert from "../../functions/FormatCurrncy";
+import { addFavourite, removeFavourite } from "../../Redux/FavouriteSlice";
+import { useAppDispatch, useAppSelector } from "../../Redux/Store";
 import { Link } from "react-router-dom";
-import { Swiper as SwiperClass } from "swiper";
+import { useTranslation } from "react-i18next";
 
 import "swiper/swiper-bundle.css";
 import "./ExploreProducts.css";
@@ -36,11 +36,25 @@ interface Product {
 }
 
 const ExploreProducts: React.FC = () => {
-    const [viewAll, setViewAll] = useState<boolean>(false);
+    const { t } = useTranslation(); // استخدام الترجمة
     const dispatch = useAppDispatch();
-
-    // Fetch products from Redux store
     const { products } = useAppSelector((state) => state.cart);
+    const IsLogin = useAppSelector((state) => state.user.IsLogin)
+    const cartItems: Product[] = useAppSelector((state) =>
+        state.cart.cart.map((item) => ({
+            ...item,
+            color1: item.color1 || "", // إذا كانت `undefined` اجعلها سلسلة فارغة
+            color2: item.color2 || "",
+        }))
+    );
+    const favourites: Product[] = useAppSelector((state) =>
+        state.favourites.favourites.map((item) => ({
+            ...item,
+            color1: item.color1 || "", // إذا كانت `undefined` اجعلها سلسلة فارغة
+            color2: item.color2 || "",
+        }))
+    );
+
     const Explore: Product[] = products
         ? products
             .filter((product): product is Product => product.Type === "Explore" && product.color1 !== undefined && product.color2 !== undefined)
@@ -55,15 +69,18 @@ const ExploreProducts: React.FC = () => {
         dispatch(fetchProducts());
     }, [dispatch]);
 
-    // Define swiper reference with correct type
-    const swiperRef = useRef<SwiperClass | null>(null);
+    const [viewAll, setViewAll] = useState<boolean>(false);
+    const swiperRef = useRef<any>(null);
     const [selectedColors, setSelectedColors] = useState<{ [key: number]: string }>({});
 
-    // Handle Swiper navigation
-    const handleNext = () => swiperRef.current?.slideNext();
-    const handlePrev = () => swiperRef.current?.slidePrev();
+    const handleNext = () => {
+        if (swiperRef.current) swiperRef.current.swiper.slideNext();
+    };
 
-    // Handle color selection
+    const handlePrev = () => {
+        if (swiperRef.current) swiperRef.current.swiper.slidePrev();
+    };
+
     const selectColor = (productId: number, color: string) => {
         setSelectedColors((prevColors) => ({
             ...prevColors,
@@ -71,12 +88,14 @@ const ExploreProducts: React.FC = () => {
         }));
     };
 
+    const isInCart = (cartItemId: number) => cartItems.some((cartItem) => cartItem.id === cartItemId);
+    const isInFavorite = (favouriteId: number) => favourites.some((favourite) => favourite.id === favouriteId);
     return (
         <section id="ExploreProducts">
             <Container>
-                <span className="Explore">Our Products</span>
+                <span className="Explore">{t("ourProducts")}</span>
                 <div className="left-side d-flex justify-content-between flex-wrap mt-3">
-                    <h1 className="Today">Explore Our Products</h1>
+                    <h1 className="Today">{t("exploreOurProducts")}</h1>
                     <div className="swiper-nav-buttons">
                         <button onClick={handlePrev} className="swiper-button prev">
                             <i className="fas fa-chevron-left"></i>
@@ -114,19 +133,52 @@ const ExploreProducts: React.FC = () => {
                                             </span>
                                         ) : (<div></div>)}
                                         <div className="icons">
-                                            <Link to="/SignUp">
-                                                <i className="fa-regular fa-heart"></i>
-                                            </Link>
-                                            <Link to="/SignUp">
-                                                <i className="fa-regular fa-eye"></i>
-                                            </Link>
+                                            {
+                                                IsLogin ? (
+                                                    isInFavorite(item.id) ? (
+                                                        <i onClick={() => dispatch(removeFavourite(item))} className="fa-solid fa-heart active"></i>
+                                                    ) : (
+                                                        <i onClick={() => dispatch(addFavourite(item))} className="fa-regular fa-heart"></i>
+                                                    )
+                                                ) : (
+                                                    <Link to="/SignUp">
+                                                        <i className="fa-regular fa-heart"></i>
+                                                    </Link>
+                                                )
+                                            }
+                                            {
+                                                IsLogin ? (
+                                                    <Link onClick={() => dispatch(getProductById(item.id))} to={`/Description/${item.id}`}>
+                                                        <i className="fa-regular fa-eye"></i>
+                                                    </Link>
+                                                ) : (
+                                                    <Link to="/SignUp">
+                                                        <i className="fa-regular fa-eye"></i>
+                                                    </Link>
+                                                )
+                                            }
+
                                         </div>
                                     </div>
-                                    <Link to="/SignUp" className="addCart">
-                                        <p>Add To Cart</p>
-                                    </Link>
+                                    {
+                                        IsLogin ? (
+                                            isInCart(item.id) ? (
+                                                <div onClick={() => dispatch(removeFromCart(item))} className="RemoveCart">
+                                                    <p>{t('Remove_From_Cart')}</p>
+                                                </div>
+                                            ) : (
+                                                <div onClick={() => dispatch(addToCart(item))} className="addCart">
+                                                    <p>{t('add_to_cart')}</p>
+                                                </div>
+                                            )
+                                        ) : (
+                                            <Link to="/SignUp" className="addCart">
+                                                <p>{t("add_to_cart")}</p>
+                                            </Link>
+                                        )
+                                    }
                                     <div className="product-des">
-                                        <p className="product-title">{item.name}</p>
+                                        <p className="product-title">{t(item.name)}</p>
                                         <div className="price d-flex">
                                             <p className="curr-price">{Convert(item.new_price)}</p>
                                             <div className="star-ctn d-flex ms-2">
@@ -164,19 +216,51 @@ const ExploreProducts: React.FC = () => {
                                             </span>
                                         ) : (<div></div>)}
                                         <div className="icons">
-                                            <Link to="/SignUp">
-                                                <i className="fa-regular fa-heart"></i>
-                                            </Link>
-                                            <Link to="/SignUp">
-                                                <i className="fa-regular fa-eye"></i>
-                                            </Link>
+                                            {
+                                                IsLogin ? (
+                                                    isInFavorite(item.id) ? (
+                                                        <i onClick={() => dispatch(removeFavourite(item))} className="fa-solid fa-heart active"></i>
+                                                    ) : (
+                                                        <i onClick={() => dispatch(addFavourite(item))} className="fa-regular fa-heart"></i>
+                                                    )
+                                                ) : (
+                                                    <Link to="/SignUp">
+                                                        <i className="fa-regular fa-heart"></i>
+                                                    </Link>
+                                                )
+                                            }
+                                            {
+                                                IsLogin ? (
+                                                    <Link onClick={() => dispatch(getProductById(item.id))} to={`/Description/${item.id}`}>
+                                                        <i className="fa-regular fa-eye"></i>
+                                                    </Link>
+                                                ) : (
+                                                    <Link to="/SignUp">
+                                                        <i className="fa-regular fa-eye"></i>
+                                                    </Link>
+                                                )
+                                            }
                                         </div>
                                     </div>
-                                    <Link to="/SignUp" className="addCart">
-                                        <p>Add To Cart</p>
-                                    </Link>
+                                    {
+                                        IsLogin ? (
+                                            isInCart(item.id) ? (
+                                                <div onClick={() => dispatch(removeFromCart(item))} className="RemoveCart">
+                                                    <p>{t('Remove_From_Cart')}</p>
+                                                </div>
+                                            ) : (
+                                                <div onClick={() => dispatch(addToCart(item))} className="addCart">
+                                                    <p>{t('add_to_cart')}</p>
+                                                </div>
+                                            )
+                                        ) : (
+                                            <Link to="/SignUp" className="addCart">
+                                                <p>{t("add_to_cart")}</p>
+                                            </Link>
+                                        )
+                                    }
                                     <div className="product-des">
-                                        <p className="product-title">{item.name}</p>
+                                        <p className="product-title">{t(item.name)}</p>
                                         <div className="price d-flex">
                                             <p className="curr-price">{Convert(item.new_price)}</p>
                                             <div className="star-ctn d-flex ms-2">
@@ -205,7 +289,7 @@ const ExploreProducts: React.FC = () => {
 
                 <div className="text-center my-5">
                     <button className="View-All" onClick={() => setViewAll(!viewAll)}>
-                        {viewAll ? "Back to Swiper" : "View All Products"}
+                        {viewAll ? t("back_to_swiper") : t("view_all_products")}
                     </button>
                 </div>
             </Container>

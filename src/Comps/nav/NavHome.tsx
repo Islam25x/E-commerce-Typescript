@@ -1,12 +1,14 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import { Container, Form, Nav, Navbar } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import "./NavLogSign.css";
 
 const NavHome: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
@@ -25,20 +27,20 @@ const NavHome: React.FC = () => {
       <Navbar expand="lg">
         <Container>
           <Navbar.Brand href="#" style={{ fontWeight: "900", width: "33%" }}>
-            Exclusive
+            {t("Exclusive")}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: "100px" }} navbarScroll>
-              <Link to="/">Home</Link>
-              <Link to="/Contact">Contact</Link>
-              <Link to="/About">About</Link>
-              <Link to="/SignUp">Sign Up</Link>
+              <Link to="/">{t("Home")}</Link>
+              <Link to="/Contact">{t("Contact")}</Link>
+              <Link to="/About">{t("About")}</Link>
+              <Link to="/SignUp">{t("Sign Up")}</Link>
             </Nav>
             <Form className="d-flex position-relative" onSubmit={handleSearchSubmit}>
               <Form.Control
                 type="search"
-                placeholder="What are you looking for?"
+                placeholder={t("What are you looking for?")}
                 className="me-2"
                 aria-label="Search"
                 value={searchQuery}

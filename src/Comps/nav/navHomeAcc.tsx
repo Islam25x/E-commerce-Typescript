@@ -4,8 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../Redux/LoginSystem/UserSlice";
 import { useAppDispatch, useAppSelector } from "../Redux/Store";
 import { getProductByName } from "../Redux/CartSlice";
+import { useTranslation } from "react-i18next"; // 
+import { ClipLoader } from "react-spinners";
 
 const NavHomeAcc: React.FC = () => {
+  const { t } = useTranslation();
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
@@ -27,7 +30,7 @@ const NavHomeAcc: React.FC = () => {
       setLoading(false);
 
       if (!fetchedProducts) {
-        alert("No products found!");
+        alert(t("noProductsFound")); // ✅ استبدال النص بترجمة
         return;
       }
 
@@ -42,34 +45,39 @@ const NavHomeAcc: React.FC = () => {
     dispatch(logout());
     navigate("/Login");
   };
+  if (loading) {
+    return (<div className='ClipLoader'>
+      <ClipLoader
+        color="red"
+        size={150}
+      />
+    </div>)
+  }
 
   return (
     <header id="NavLogSign">
       <Navbar expand="lg">
         <Container>
           <Navbar.Brand style={{ fontWeight: "900", width: "33%" }}>
-            Exclusive
+            {t("brandName")}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: "100px" }} navbarScroll>
-              <Link to="/">Home</Link>
-              <Link to="/Contact">Contact</Link>
-              <Link to="/About">About</Link>
-              <Link to="/SignUp">Sign Up</Link>
+              <Link to="/">{t("home")}</Link>
+              <Link to="/Contact">{t("contact")}</Link>
+              <Link to="/About">{t("about")}</Link>
+              <Link to="/SignUp">{t("signUp")}</Link>
             </Nav>
             <Form className="d-flex position-relative" onSubmit={handleSearchSubmit}>
               <Form.Control
                 type="search"
-                placeholder="What are you looking for?"
+                placeholder={t("searchPlaceholder")}
                 className="me-2"
                 aria-label="Search"
                 value={searchQuery}
                 onChange={handleSearchChange}
               />
-              <button type="submit" disabled={loading} className="search-btn">
-                {loading ? "Searching..." : <i className="Search-i fa-solid fa-magnifying-glass"></i>}
-              </button>
               <Link to="/Favorite">
                 <span>{FavProducts.length}</span>
                 <i className="fa-regular fa-heart"></i>
@@ -84,23 +92,23 @@ const NavHomeAcc: React.FC = () => {
               <NavDropdown className="ms-4" title="." id="basic-nav-dropdown">
                 <NavDropdown.Item className="d-flex" href="/Account">
                   <i className="def-user fa-regular fa-user me-3"></i>
-                  <h6 className="mt-1">Manage My Account</h6>
+                  <h6 className="mt-1">{t("manageAccount")}</h6>
                 </NavDropdown.Item>
                 <NavDropdown.Item href="/Cart/CheckOut">
                   <i className="me-3 fa-solid fa-bag-shopping"></i>
-                  <h6 className="mt-1">My Order</h6>
+                  <h6 className="mt-1">{t("myOrder")}</h6>
                 </NavDropdown.Item>
                 <NavDropdown.Item href="/Favorite">
                   <i className="me-3 fa-regular fa-circle-xmark"></i>
-                  <h6 className="mt-1">My Cancellations</h6>
+                  <h6 className="mt-1">{t("myCancellations")}</h6>
                 </NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
                   <i className="me-3 fa-regular fa-star"></i>
-                  <h6 className="mt-1">My Reviews</h6>
+                  <h6 className="mt-1">{t("myReviews")}</h6>
                 </NavDropdown.Item>
                 <NavDropdown.Item onClick={handleLogOut}>
                   <i className="me-3 fa-solid fa-arrow-right-from-bracket"></i>
-                  <h6 className="mt-1">Logout</h6>
+                  <h6 className="mt-1">{t("logout")}</h6>
                 </NavDropdown.Item>
               </NavDropdown>
             </Form>
