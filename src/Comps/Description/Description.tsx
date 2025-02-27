@@ -10,9 +10,13 @@ import {
   removeFromCart,
   getProductById,
 } from "../Redux/CartSlice";
+import { useTranslation } from "react-i18next";
 import { addFavourite, removeFavourite } from "../Redux/FavouriteSlice";
 import "./Description.css";
+import '../Home/FlashSales/FlashSales.css'
+import '../Home/ExploreProducts/ExploreProducts.css'
 
+// تعريف نوع المنتج لتجنب الأخطاء
 interface Product {
   id: number;
   name: string;
@@ -22,8 +26,8 @@ interface Product {
   Sale: boolean;
   Type: string;
   category: string;
-  color1?: string;
-  color2?: string;
+  color1?: string | null;
+  color2?: string | null;
   new_price: number;
   old_price: number | null;
   quantity: number;
@@ -36,10 +40,12 @@ interface Product {
 }
 
 const Description: React.FC = () => {
-  const { productId } = useParams<{ productId: string }>();
-  const productIdNum = Number(productId);
+  const { productId } = useParams<{ productId?: string }>(); // إضافة `?` لجعلها اختيارية
+  const productIdNum = productId ? Number(productId) : null;
+
   const dispatch = useAppDispatch();
-  
+  const { t, i18n } = useTranslation();
+
   const [selectedSize, setSelectedSize] = useState<string>("M");
   const [selectedColors, setSelectedColors] = useState<{ [key: number]: string }>({});
 
@@ -49,22 +55,25 @@ const Description: React.FC = () => {
     state.cart.products.find((p: Product) => p.id === productIdNum)
   );
 
-  const cartItems = useAppSelector((state) => state.cart.cart);
-  const favourites = useAppSelector((state) => state.favourites.favourites);
-  
+  const cartItems = useAppSelector((state) => state.cart.cart as Product[]);
+  const favourites = useAppSelector((state) => state.favourites.favourites as Product[]);
+
   const isInCart = (id: number) => cartItems.some((item) => item.id === id);
   const isAddedToFav = (id: number) => favourites.some((item) => item.id === id);
 
   useEffect(() => {
-    if (!product) {
+    if (!product && productIdNum !== null) {
       dispatch(getProductById(productIdNum));
     }
   }, [dispatch, productIdNum, product]);
 
-  if (!product) return <div>Product not found</div>;
+  if (!product) return <div>{t("ProductNotFound")}</div>;
 
   const selectColor = (productId: number, color: string) => {
-    setSelectedColors((prevColors) => ({ ...prevColors, [productId]: color }));
+    setSelectedColors((prevColors) => ({
+      ...prevColors,
+      [productId]: color,
+    }));
   };
 
   const cartProduct = cartItems.find((item) => item.id === product.id);
@@ -73,55 +82,55 @@ const Description: React.FC = () => {
   return (
     <section id="product-description">
       <Container>
-        <p className="Path">
-          Home / {product.category} / <span className="text-dark">{product.name}</span>
+        <p className="Path" dir={i18n.language === "ar" ? "rtl" : "ltr"}>
+          {t("Home")} / {t(`categories.${product.category}`)} /{" "}
+          <span className="text-dark">{t(product.name)}</span>
         </p>
         <Row>
           <Col lg={2} md={2} sm={4}>
             <div className="Album">
               {[...Array(4)].map((_, index) => (
                 <div className={`photo photo${index + 1}`} key={index}>
-                  <img src={product.image} alt={product.name} />
+                  <img src={product.image} alt={t(product.name)} />
                 </div>
               ))}
             </div>
           </Col>
           <Col lg={5} md={5} sm={8}>
             <div className="center-photo">
-              <img src={product.image} alt={product.name} />
+              <img src={product.image} alt={t(product.name)} />
             </div>
           </Col>
           <Col lg={5} md={5} sm={8}>
             <div className="product-content" style={{ marginTop: "1rem" }}>
-              <h3>{product.name}</h3>
+              <h3>{t(product.name)}</h3>
               <div className="star-ctn d-flex">
                 <span className="count ms-2">({product.pices || 0})</span>
                 <span
                   className="count ms-2"
                   style={{ color: product.pices > 0 ? "green" : "red" }}
                 >
-                  {product.pices > 0 ? " | In Stock" : " | Out of Stock"}
+                  {product.pices > 0 ? ` | ${t("InStock")}` : ` | ${t("OutOfStock")}`}
                 </span>
               </div>
               <h3 className="mt-3">{Convert(product.new_price)}</h3>
-              <p className="description mt-3">{product.description}</p>
+              <p className="description mt-3">{t(product.description)}</p>
               <hr />
               <div className="Colors d-flex">
-                <h6>Colors:</h6>
-                {[product.color1, product.color2].map(
-                  (color, index) =>
-                    color && (
-                      <span
-                        key={index}
-                        onClick={() => selectColor(product.id, color)}
-                        style={{ backgroundColor: color }}
-                        className={selectedColors[product.id] === color ? "active" : ""}
-                      ></span>
-                    )
+                <h6>{t("Colors")}:</h6>
+                {[product.color1, product.color2].map((color, index) =>
+                  color ? (
+                    <span
+                      key={index}
+                      onClick={() => selectColor(product.id, color)}
+                      style={{ backgroundColor: color }}
+                      className={selectedColors[product.id] === color ? "active" : ""}
+                    ></span>
+                  ) : null
                 )}
               </div>
               <div className="size d-flex mt-3 mb-2">
-                <h6 className="mt-2">Size:</h6>
+                <h6 className="mt-2">{t("Size")}:</h6>
                 <ul className="d-flex" style={{ marginLeft: "-2rem" }}>
                   {["XS", "S", "M", "L", "XL"].map((size) => (
                     <li
@@ -169,7 +178,7 @@ const Description: React.FC = () => {
                     dispatch(isInCart(product.id) ? removeFromCart(product) : addToCart(product))
                   }
                 >
-                  {isInCart(product.id) ? "In Cart" : "Buy Now"}
+                  {isInCart(product.id) ? t("InCart") : t("buyNow")}
                 </button>
                 <div className="heart">
                   {isAddedToFav(product.id) ? (

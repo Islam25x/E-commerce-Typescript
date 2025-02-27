@@ -6,6 +6,8 @@ import NavHomeAcc from "../nav/navHomeAcc";
 import { useAppDispatch, useAppSelector } from "../Redux/Store";
 import { addToCart, removeFromCart, renderStars, getProductByBrowseCategory } from "../Redux/CartSlice";
 import { addFavourite, removeFavourite } from "../Redux/FavouriteSlice";
+import { useTranslation } from "react-i18next";
+import { ClipLoader } from "react-spinners";
 
 // Define types for the selected colors and CartProduct
 type CartProduct = {
@@ -33,11 +35,17 @@ type CartProduct = {
 const BcategoryProducts = () => {
     const { BcategoryProducts } = useParams<{ BcategoryProducts: string }>();
     const dispatch = useAppDispatch();
+    const { t , i18n } = useTranslation();
+
+    useEffect(() => {
+        document.getElementById("CategoryProducts")?.setAttribute("dir", i18n.language === "ar" ? "rtl" : "ltr");
+    }, [i18n.language]);
 
     // Get the products from Redux state
     const { products, isLoading, error } = useAppSelector((state) => state.cart);
     const cartProducts = useAppSelector((state) => state.cart.cart);
     const favouriteProducts = useAppSelector((state) => state.favourites.favourites);
+    
 
     // Fetch products by category
     useEffect(() => {
@@ -61,7 +69,12 @@ const BcategoryProducts = () => {
     if (isLoading) {
         return (
             <section id="CategoryProducts">
-                <p className="text-center">Loading products...</p>
+                <div className='ClipLoader'>
+                    <ClipLoader
+                        color="red"
+                        size={150}
+                    />
+                </div>
             </section>
         );
     }
@@ -87,13 +100,13 @@ const BcategoryProducts = () => {
             <NavHomeAcc />
             <section id="CategoryProducts">
                 <Container>
-                    <h1 className="mt-5">{BcategoryProducts}</h1>
+                    <h1 className="mt-5">{t(`${BcategoryProducts}`)}</h1>
                     <Row>
                         {catProducts.map((catProduct) => (
                             <Col lg={3} md={6} sm={6} key={catProduct.id}>
                                 <div className="product">
                                     <div className="product-top d-flex justify-content-between">
-                                        <img src={catProduct.image} alt={catProduct.name} />
+                                        <img src={catProduct.image} alt={t(catProduct.name)} />
                                         <div className="icons">
                                             {/* Favorite icon */}
                                             <i
@@ -113,16 +126,16 @@ const BcategoryProducts = () => {
                                     {/* Cart action */}
                                     {isAddedToCart(catProduct) ? (
                                         <div onClick={() => dispatch(removeFromCart(catProduct))} className="RemoveCart">
-                                            <p>Remove from Cart</p>
+                                            <p>{t('Remove_From_Cart')}</p>
                                         </div>
                                     ) : (
                                         <div onClick={() => dispatch(addToCart(catProduct))} className="addCart">
-                                            <p>Add To Cart</p>
+                                            <p>{t("add_to_cart")}</p>
                                         </div>
                                     )}
                                     {/* Product description */}
                                     <div className="product-des">
-                                        <p className="product-title">{catProduct.name}</p>
+                                        <p className="product-title">{t(catProduct.name)}</p>
                                         <div className="price d-flex">
                                             <p className="curr-price">{Convert(catProduct.new_price)}</p>
                                             {catProduct.old_price && <p className="prev-price">{Convert(catProduct.old_price)}</p>}

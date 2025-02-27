@@ -4,8 +4,8 @@
     "name": "HAVIT HV-G92 Gamepad",
     "category": "Electronics",
     "Bcategory": "Gaming",
-    "description": "The HAVIT HV-G92 Gamepad is a versatile and stylish gaming controller that offers a wide range of features and customization options.",
-    "image": "https://s3-alpha-sig.figma.com/img/5d5c/2e52/50752d55f8b60f2aa2923183dadbc135?Expires=1740960000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=Lue-WfNRxXsWTtiD1iUM~cfhT4rDJO8dbUzqCA1upxp3l8rtJUDNL90P801snSqj7s5rncO~VjwPhzFT4eGuLTBbmMln2mfFhBVM6hKxZzNxrgnyLGo5-bmuPhs~Ie4gIWspVKSbHFSDvi1ZURKt-RaOGvaipxRqawKg-3zKxIORIwPfHOiyE9WGwmhLRE9WAkVMTplY1NMumImMBEpcw3Gjg-IPXO~L9Gi90MBLUgc834o-ERLZrMxZM9kj7z97~cdYbU7N-N4NZE2teQC2MxoefxyozPBKZ0NIz-KKJ7~KgCeqKJW4h-rwfweCINWQ5UDpDyIBTZyOv4AY-PDj2Q__",
+    "description": "This smartphone comes with a stunning 6.5-inch display, 128GB storage, and a 48MP camera for all your needs.",
+    "image": "https://s3-alpha-sig.figma.com/img/5d5c/2e52/50752d55f8b60f2aa2923183dadbc135?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=QoPE1xfyhTKLQUs65WgTKi6aXbaOf2ftJpWp8VkrvIkqMtzhUDGHdALPgC96cpb49oozocup-FhZNm99kqY1uU10KV2HpUDUxZZaNu-5lKuvEMuKx9Q~YI6WE1KP62kr-0~iQDE~PYckleUSlYMTHo~s~cQueS-JpzBCvBKOgRAd0Ra9Re0MWmYUaLv5Po3zEpII~tIJX4gVCNFRU7SJrWvkZeMwLFhELQj-p~3GQgD3PjBW9zlMDjj8Qzqvn50gJbnD7oHiYYypklGQ~EdD5-pn28-0YVOxVd-vDD00AKivyMpxpWq8s2PbILbSCkG6rpbofIfr6RGBAIr~ZFFgQw__",
     "new_price": 120,
     "old_price": 160,
     "salepersent": "-50%",
@@ -16,7 +16,7 @@
     "color2": "",
     "Sale": true,
     "InStock": true,
-    "Type":"FlashSales",
+    "Type": "FlashSales",
     "quantity": 0
   },
   {
@@ -36,7 +36,7 @@
     "reviews": 24,
     "Sale": true,
     "InStock": false,
-    "Type":"FlashSales",
+    "Type": "FlashSales",
     "quantity": 0
   },
   {
@@ -56,7 +56,7 @@
     "reviews": 12,
     "Sale": true,
     "InStock": true,
-    "Type":"FlashSales",
+    "Type": "FlashSales",
     "quantity": 0
   },
   {
@@ -76,7 +76,7 @@
     "reviews": 42,
     "Sale": true,
     "InStock": true,
-    "Type":"FlashSales",
+    "Type": "FlashSales",
     "quantity": 0
   },
   {
@@ -96,7 +96,7 @@
     "color2": "",
     "Sale": true,
     "InStock": false,
-    "Type":"FlashSales",
+    "Type": "FlashSales",
     "quantity": 0
   },
   {
@@ -115,7 +115,7 @@
     "reviews": 88,
     "Sale": true,
     "InStock": false,
-    "Type":"BestSelling",
+    "Type": "BestSelling",
     "quantity": 0
   },
   {
@@ -133,7 +133,7 @@
     "stars": 4.5,
     "Sale": false,
     "InStock": true,
-    "Type":"BestSelling",
+    "Type": "BestSelling",
     "quantity": 0
   },
   {
@@ -152,7 +152,7 @@
     "color2": "",
     "Sale": false,
     "InStock": true,
-    "Type":"BestSelling",
+    "Type": "BestSelling",
     "quantity": 0
   },
   {
@@ -170,7 +170,7 @@
     "color2": "",
     "Sale": false,
     "InStock": false,
-    "Type":"BestSelling",
+    "Type": "BestSelling",
     "quantity": 0
   },
   {
@@ -189,13 +189,14 @@
     "color2": "",
     "Sale": false,
     "InStock": true,
-    "Type":"Explore",
+    "Type": "Explore",
     "quantity": 0
   },
   {
     "id": 11,
     "name": "CANON EOS DSR Camera",
     "category": "Electronics",
+    "description": "This smartphone comes with a stunning 6.5-inch display, 128GB storage, and a 48MP camera for all your needs.",
     "Bcategory": "Camera",
     "image": "https://s3-alpha-sig.figma.com/img/e608/92a4/f0a3d5d144dce622c7338ec5be12908f?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=uUWeeuwXkTFj0gGpZ0vH4s3uQn~1ncn7X4WE2ZtevxZyrzkX~EfjXslfdZSGNHlE58~Pzbd2v4gl~jkDTzBNSfa6irAf-GNpNgCK~EI3K5h05ftazyav1AoKTbCjcSvWSrsYbjPxk8eranRxKcbme9RGtNtg1Spf10yvvNmiEzG8pt5nmbjOZVHvecPLaXjfBxNQw8jBZf29jYMuUBqLMa8YiwS~cFjsx8TDyUx4kCIYuTJUJNHBkaUZZ487jm91mlSTIvS1ckNSCeoUgQYE6eKrt-kFrHLMW4Z0qke-ekEidneznNPh5xh60NGCKALpkuu5dDqi3EUp0WKJBAJKrA__",
     "new_price": 360,
@@ -203,13 +204,14 @@
     "salebg": "#f5f5f5",
     "pices": 95,
     "stars": 4,
-    "Type":"Explore",
+    "Type": "Explore",
     "color1": "",
     "color2": ""
   },
   {
     "id": 12,
     "name": "ASUS FHD Gamming Laptop",
+    "description": "This smartphone comes with a stunning 6.5-inch display, 128GB storage, and a 48MP camera for all your needs.",
     "category": "Electronics",
     "Bcategory": "Computers",
     "image": "https://s3-alpha-sig.figma.com/img/203b/e522/b7b02d10672f6f6147762cf52bfcfc54?Expires=1740960000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=XvT9loDuws3CSUE3N8ugFbs~GNdMJEExYuPP5mt7~w-Q2SJ6ZmmkRjtR9H5En6E2WqxKgK6QqHAPK4Wzc-RMHBXsaYxMEvFkauarqVGaAFB1DUJ5bCC3-hpf3STe6kSW~wTLB02lwA6NAzuLwlANx3tEDUBfK42gcNnmG0avnOwN-JomDkhU8mO8HdLrdMLYK3OQ0yCu-FGobxftqqDPnW9MxLk8shzkATEWlEoiNUZq-e4rAbyEuU8qWXL8QWNVjgkd-XH04ZWnK9kYZJob4d219Lngh7Kdrch11jizJG7j7AkUWWHw0bSbLR0xktK79syr4vb8WuFkGViNrpsNLw__",
@@ -218,7 +220,7 @@
     "salebg": "#f5f5f5",
     "pices": 325,
     "stars": 5,
-    "Type":"Explore",
+    "Type": "Explore",
     "color1": "",
     "color2": ""
   },
@@ -226,6 +228,7 @@
     "id": 13,
     "name": "AK-900 Wired Keyboard",
     "category": "Electronics",
+    "description": "This smartphone comes with a stunning 6.5-inch display, 128GB storage, and a 48MP camera for all your needs.",
     "Bcategory": "Gaming",
     "image": "https://s3-alpha-sig.figma.com/img/e59d/9f34/8cc24eeff489863523b63971c3ff8e4a?Expires=1740960000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=kHQPPDT9nxG4WhMXw9pZmVZidfzui2rfmPIw4v~MvUlTJnCtCKrdoT26qcmKaofKEXMbSMeaNMpoaNEtzZPbcl1V0nSyVO08kZZOw4tG-dIFmS6NfgHttlGYUVog-oW~Yc2JbGEZlogMYl9buqSZeCSiK~nhcoc2HEjd8bz7AYRDFe74LfUqZGocYuCqZRJC8c23IkzhmgmxZWD0~U39ufrMWa4vgxcsJCkU~OVnQUfUbmO9K42rOXfrDEY8HolS0J4-kXw7ghy0Dk0O6zZwqpbVgVqRVecQ1iPvSXzae4CdsojA7bv1xQ4Uk8grAlLIvIRofCYpPHf02yW6qvV3ZA__",
     "new_price": 500,
@@ -233,7 +236,7 @@
     "salebg": "#f5f5f5",
     "pices": 145,
     "stars": 4,
-    "Type":"Explore",
+    "Type": "Explore",
     "color1": "",
     "color2": ""
   },
@@ -241,11 +244,12 @@
     "id": 14,
     "name": "Kids Electric Car",
     "category": "Baby’s & Toys",
+    "description": "This smartphone comes with a stunning 6.5-inch display, 128GB storage, and a 48MP camera for all your needs.",
     "image": "https://s3-alpha-sig.figma.com/img/5f4e/a9ac/f805319ddf3897fc9daaf58559542260?Expires=1740960000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=C6sYEP95V8tm3LoKkLjib65QGkRWhmGMM05iUGE5SmXkrmdEiAwHAfSmJWMxDaF-rY4r0TY7j62gIx1kUF7mVeJlCmU-qyCWsmV4z-KtqploBpTSGDzQOF~oaozPMs3mdfDZDLuuI~FxFDS8oEtXyaiurMwv74aTxAODlVYyXi3A89KI4ElTWvP9zwYCo2~ZmGcuZPkOpOoqAgut68Pq8ywvCI4FxA97HJstqF92MT0hqKH2M7743wqDPNR8bQmovUUJPsMpu-rvsZpo20yU3X9r5jug8hzSCbwK-J7ACaMC6BZbVCQ5GyoVP2-8r4wSJEbQkzMO0dnznr75HjKG2g__",
     "new_price": 960,
     "salepersent": "New",
     "salebg": "#00ff66",
-    "Type":"Explore",
+    "Type": "Explore",
     "color1": "red",
     "color2": "#db4444",
     "pices": 65,
@@ -255,11 +259,12 @@
     "id": 15,
     "name": "Jr_Zoom Soccer Cleats",
     "category": "Sports & Outdoor",
+    "description": "This smartphone comes with a stunning 6.5-inch display, 128GB storage, and a 48MP camera for all your needs.",
     "image": "https://s3-alpha-sig.figma.com/img/d0b7/bb25/884f6fdfc1357634d7d7b09e05755c2f?Expires=1740960000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=fDpeHi6sgXS~9q2pSyux2Ge7y8VnhAF1hUdJM7GaSQet3iINskMYmYtrY5g0jA9RzQ54hGGr8WszYeQljJxymhvWVtQ4wJXlqXG2xbI2LPImQoYXBIRh2U95XtwWLqkiPgLlU4W4A5iGnjJR1Ev1o6rMXrd3ybuQTubkKz4TStA7V4d5CRB6atisCjaIKY4lillCT3g39Ds5MjewGz~NVvUtWd7CWIN15MMEpSFFFy~HLhYxvjq5guSZHku8oKJerR-h-Vm~pXZZnyF0KW3sXEV8ugWnm2gJCt4jGLxvp3ulqGoVn2wpUDvJaMtmMu3kaNMdkBV9bZQKq8Y~R4DUzQ__",
     "new_price": 1160,
     "salepersent": "",
     "salebg": "#f5f5f5",
-    "Type":"Explore",
+    "Type": "Explore",
     "color1": "#daef46",
     "color2": "#db4444",
     "pices": 35,
@@ -269,12 +274,13 @@
     "id": 16,
     "name": "Gucci duffle bag",
     "category": "Woman’s Fashion",
+    "description": "This smartphone comes with a stunning 6.5-inch display, 128GB storage, and a 48MP camera for all your needs.",
     "image": "https://s3-alpha-sig.figma.com/img/4f3c/a1d1/2722dbdf98f25179d3c0b785988c513d?Expires=1740960000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=BNUMHbparQdh2luATOmpCn64JxLPcpHw4OIidlWrdC0CP4thUOCo3rNjl7OaGLY1rV-xyL0UkDbIq90GLQF4rkHihQAOVECKtX2bTzxey0kPk-udL4Ze6u~ayRRYe72x8iy-4Ykyv~-teHvIVWpkDB9AQ~SjQW6m2Wi8J2Z64qpbgl3W8y0LCveQWTns05ObaUjOsk1-XptaX0-9e7PkT6OIYer55pAx4S~VTGwpilh1f2WdSLFBTi7de2lEgtq7Oxi71o400B~ik74DRdDfu~BevQLbN8H~8s6h9Ul35RIhLJ2IyzT2O-9Rb0YqNVu0fAblHPuXbJNK-IkyDtMA8g__",
     "new_price": 660,
     "old_price": null,
     "salepersent": "New",
     "salebg": "#00ff66",
-    "Type":"Explore",
+    "Type": "Explore",
     "color1": "green",
     "color2": "black",
     "color12111": "#db4444",
@@ -285,28 +291,29 @@
     "id": 17,
     "name": "Quilted Satin Jacket",
     "category": "Men’s Fashion",
+    "description": "This smartphone comes with a stunning 6.5-inch display, 128GB storage, and a 48MP camera for all your needs.",
     "image": "https://s3-alpha-sig.figma.com/img/04a1/915f/d6cedd7c8b1073685c5f1be1b50e1ac6?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=KyOyt3nIpihg0U6fEg7nNTxs1~0U-GC1kDhjHRNBhVvATJeUasMUrEmSaPTnPcrUrbYiN1ROwqmMukmS4RnrBhy3f46bzQ25Rz1ACgd9Kd7AKMctsf~Sjtwb65lro5p4WA0PmE14VL0RhBMz65~Rh51ewFhxwvbT~AMreKUrg36CbMLtIb35dF6vaUjUyQwz6DheQa5-RF1EWHyt44KQpnIPR6Yl1aBTbCDPN30gThk4QVJKyjIVpDcylTW-P2io4~jzBL9qxSLDEWkECctzx8B57yn-FD11h0j4JnZQxBjnR7QoQB2KvKbn6SnQyu9WYLkBwqGsEERfWTe8vBfkbg__",
     "new_price": 660,
     "salepersent": "",
     "salebg": "#f5f5f5",
-    "Type":"Explore",
+    "Type": "Explore",
     "color1": "black",
     "color2": "#db4444",
     "pices": 55,
     "stars": 4.5
-  }
-  ,
+  },
   {
     "id": 18,
     "name": "Music Sub",
     "Bcategory": "HeadPhones",
     "category": "Electronics",
+    "description": "This smartphone comes with a stunning 6.5-inch display, 128GB storage, and a 48MP camera for all your needs.",
     "image": "https://s3-alpha-sig.figma.com/img/3cc9/43ca/7e210f637fc0504b7d93cd207df744c2?Expires=1740960000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=XCVWETm1D8bi8-uLwodZ7ZHQpphWu57KKhsLoerSzhEF2-CS5D52867BadgeBPni88Qv~ov8eRGWA59Q18Hae3QhrQe53IWAtDFrFqd8CkpD32cnuqgtoGx5~dojvFQgw8XDilT5GwqvGHHK~ps3DkaQdm7gH~pLnFM8XWBNUfusL26PXcDOJZhd9OaYaAjh~JjWLybdqn4-8hyI-cK51tw3dKD2KIrkCOeNzq4PhRDpnECaWxRrhThN3kLofyw1ILDAbiPTX7xDr~KIPkmMyENadOjTuj9VjyGQswV4o4qjlV4c1Sqr7Bdr6GA4jJFL96yCXNfKlFGvc~1xcML66w__",
     "new_price": 660,
     "old_price": null,
     "salepersent": "",
     "salebg": "#f5f5f5",
-    "Type":"Explore",
+    "Type": "Explore",
     "color1": "black",
     "color2": "#db4444",
     "pices": 55,

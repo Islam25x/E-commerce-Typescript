@@ -161,7 +161,7 @@
 .product-bottom{
     margin-left: -.5rem;
 }
-.product-bottom span{
+.product-bottom span , #product-description .Colors span{
     height: 1rem;
     width: 1rem;
     border-radius: 50%;

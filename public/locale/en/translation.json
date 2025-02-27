@@ -67,7 +67,13 @@
     "Categories": "Categories",
     "browse_by_category": "Browse By Category",
     "offerTitle": "Enhance Your Music Experience",
-    "buyNow": "buyNow",
+    "buyNow": "buy Now",
+    "InStock": "In Stock",
+    "OutOfStock": "Out of Stock",
+    "Colors": "Colors",
+    "Size": "Size",
+    "ProductNotFound": "Product not found",
+    "InCart": "In Cart",
     "ourProducts": "Our Products",
     "exploreOurProducts": "Explore Our Products",
     "Featured": "Featured",
@@ -189,7 +195,7 @@
     "address": "address",
     "welcome": "welcome",
     "myAccount": "myAccount",
-    "editYourProfile":"edit Your Profile",
+    "editYourProfile": "edit Your Profile",
     "wishlist": "Wishlist",
     "moveAllToBag": "Move All To Bag"
 }

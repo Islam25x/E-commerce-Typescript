@@ -6,11 +6,11 @@
 #ExploreProducts .product .product-title{
     margin-top: 3rem;
 }
-#ExploreProducts .product-bottom .active , #SearchResult .product-bottom .active{
+#ExploreProducts .product-bottom .active , #SearchResult .product-bottom .active , #product-description .Colors .active{
     position: relative;
     border: 1px solid black;
 }
-#ExploreProducts .product-bottom .active::after{
+#ExploreProducts .product-bottom .active::after , #product-description .Colors::after{
     content: "";
     width: .9rem;
     height: .9rem;
