@@ -1,74 +1,163 @@
 #CheckOut {
   padding: 3rem 0;
 }
+
+#CheckOut .Path {
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+#CheckOut h1 {
+  text-align: center;
+  font-size: 2rem;
+}
+
+/* LEFT FORM SECTION */
 #CheckOut .left .inp-filed p {
   color: gray;
+  font-size: 0.95rem;
 }
+
 #CheckOut .left .inp-filed input {
-  margin-top: -0.5rem;
+  margin-top: 0.2rem;
   border: none;
   background-color: rgb(236, 236, 236);
-  color: black;
-  padding: 0.5rem;
-  width: 70%;
+  color: red;
+  padding: 0.6rem;
+  width: 100%;
+  border-radius: 5px;
 }
+
+/* CHECKBOX */
 #CheckOut .left .check {
   height: 1rem;
   width: 1rem;
-  background-color: red;
-  color: white;
-  position: relative;
 }
+
+/* RIGHT SECTION */
+#CheckOut .right {
+  padding-top: 1rem;
+}
+
 #CheckOut .right .right-top {
-  margin-top: 1rem;
-  width: 80%;
+  width: 100%;
 }
-#CheckOut .right .right-top .cart-products p {
-  align-content: end;
+
+#CheckOut .right .right-cart {
+  max-height: 250px;
+  overflow-y: auto;
 }
-#CheckOut .right p,
-#CheckOut .right label {
-  font-weight: 500;
+
+#CheckOut .right .cartItem-image {
+  width: 3rem;
+  height: 3rem;
+  object-fit: cover;
+  border-radius: 6px;
 }
-#CheckOut .right input {
-  width: 1.1rem;
-  height: 1.1rem;
-  position: relative;
-  top: 0.2rem;
+
+#CheckOut .right-price p {
+  font-size: 1rem;
 }
-#CheckOut .right input:checked::after {
+
+/* RADIO BUTTONS */
+#CheckOut .right input[type="radio"] {
+  width: 1rem;
+  height: 1rem;
+}
+
+#CheckOut .right input[type="radio"]:checked::after {
   content: "";
-  height: 12px;
-  width: 11.3px;
+  height: 10px;
+  width: 10px;
   border-radius: 50%;
-  background-color: black;
-  color: black;
+  background-color: red;
   position: absolute;
-  top: 2.2px;
+  top: 3px;
   left: 3px;
 }
-#CheckOut .right input:checked::before {
+
+#CheckOut .right input[type="radio"]:checked::before {
   content: "";
-  height: 1.1rem;
-  width: 1.1rem;
-  border-radius: 50%;
-  background-color: transparent;
-  border: 1.8px solid black;
-  position: absolute;
-  top: 0;
-  left: -0.2px;
-}
-#CheckOut .right .photos img {
-  width: 3rem;
   height: 1rem;
-  margin-left: 0.5rem;
+  width: 1rem;
+  border-radius: 50%;
+  border: 2px solid red;
+  position: absolute;
 }
+
+/* COUPON SECTION */
+#CheckOut .right .Coupon {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 #CheckOut .right .Coupon input {
-  padding: 1.7rem;
+  padding: 0.7rem;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #ccc;
 }
+
+#CheckOut .right .Apply {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: rgb(223, 59, 59);
+  color: white;
+  border-radius: 4px;
+}
+
+/* ORDER BUTTON */
+#CheckOut .right .Order {
+  padding: 0.75rem;
+  width: 100%;
+  background-color: rgb(223, 59, 59);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+/* ARABIC DIRECTION FIX */
 .arabic-spacing input {
   margin-left: 10px;
 }
-#CheckOut .photo img{
-    margin: 0;
+
+/* MEDIA QUERIES */
+@media (max-width: 768px) {
+  #CheckOut {
+    padding: 2rem 1rem;
+  }
+
+  #CheckOut .right .cart-products {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #CheckOut .right .cart-products img {
+    margin-bottom: 0.5rem;
+  }
+
+  #CheckOut .right .Coupon {
+    flex-direction: column;
+  }
+
+  #CheckOut .left .inp-filed input,
+  #CheckOut .right .Coupon input {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  #CheckOut h1 {
+    font-size: 1.5rem;
+  }
+
+  #CheckOut .Path {
+    font-size: 0.75rem;
+  }
+
+  #CheckOut .right .Order {
+    font-size: 0.9rem;
+  }
 }
